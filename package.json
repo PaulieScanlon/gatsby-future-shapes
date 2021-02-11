@@ -1,31 +1,61 @@
 {
-  "name": "gatsby-wordpress",
-  "description": "A gatsby-source-wordpress-experimental demo",
-  "license": "MIT",
+  "name": "gatsby-future-shapes",
+  "description": "A gatsby-source-wordpress demo",
   "version": "0.0.1",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "serve": "gatsby serve",
+    "prettier": "prettier --config ./.prettierrc.js --ignore-path ./.prettierignore --write \"**/*.{json,js,ts,tsx,mdx}\"",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix --quiet"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:fix && npm run prettier",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": ""
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulieScanlon/gatsby-future-shapes.git"
+  },
+  "keywords": [
+    "Gatsby",
+    "WP GraphQL",
+    "WP Gatsby"
+  ],
   "author": {
     "name": "Paul Scanlon",
     "email": "pauliescanlon@gmail.com"
   },
-  "scripts": {
-    "develop": "gatsby develop",
-    "clean": "gatsby clean",
-    "build": "gatsby build",
-    "clean-develop": "gatsby clean && gatsby develop",
-    "clean-build": "gatsby clean && gatsby build",
-    "start": "npm run develop",
-    "serve": "gatsby serve"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulieScanlon/gatsby-future-shapes/issues"
   },
+  "homepage": "https://github.com/PaulieScanlon/gatsby-future-shapes#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "gatsby": "^2.24.37",
-    "gatsby-plugin-sharp": "^2.6.43",
-    "gatsby-source-wordpress-experimental": "^1.5.3",
-    "gatsby-transformer-sharp": "^2.5.19",
+    "gatsby": "^2.30.1",
+    "gatsby-plugin-sharp": "^2.14.1",
+    "gatsby-source-wordpress": "^4.0.1",
+    "gatsby-transformer-sharp": "^2.12.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "typescript": "^4.1.5"
   },
   "devDependencies": {
-    "prettier": "^2.1.2"
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-react": "^7.22.0",
+    "husky": "^4.3.8",
+    "prettier": "^2.2.1",
+    "prettier-plugin-organize-imports": "^1.1.1"
   }
 }

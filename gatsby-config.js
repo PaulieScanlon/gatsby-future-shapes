@@ -1,4 +1,3 @@
-// require .env.development or .env.production
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -6,19 +5,12 @@ require('dotenv').config({
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-source-wordpress-experimental`,
+      resolve: `gatsby-source-wordpress`,
       options: {
-        url: `https://pauliepro.wpcomstaging.com/graphql`,
-        verbose: true,
-        develop: {
-          hardCacheMediaFiles: true,
-        },
-        debug: {
-          graphql: {
-            writeQueriesToDisk: true,
-          },
-        },
+        url: process.env.WPGRAPHQL_URL,
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 }

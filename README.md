@@ -1,5 +1,5 @@
-# gatsby-wordpress
+# gatsby-future-shapes
 
-## gatsby-source-wordpress V4 (alpha) starter
+## gatsby-source-wordpress
 
-Me doing some tests 🕺
+[gatsby-source-wordpress](https://www.gatsbyjs.com/plugins/gatsby-source-wordpress/)
