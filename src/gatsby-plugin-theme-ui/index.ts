@@ -4,11 +4,12 @@ export default {
     background: '#ffffff',
   },
   fonts: {
+    heading: 'system-ui',
     body: 'system-ui',
   },
   sizes: {
     header: '64px',
-    container: '1140px',
+    container: '840px',
   },
 
   styles: {
@@ -22,6 +23,13 @@ export default {
       a: {
         variant: 'links.nav',
       },
+    },
+  },
+  buttons: {
+    primary: {
+      backgroundColor: 'text',
+      color: 'background',
+      cursor: 'pointer',
     },
   },
   links: {

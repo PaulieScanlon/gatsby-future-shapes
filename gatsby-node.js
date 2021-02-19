@@ -39,7 +39,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     pages.map(async (edge, index) => {
       const { id, uri } = edge.node
       await actions.createPage({
-        component: resolve('./src/templates/page-template.tsx'),
+        component: resolve('./src/templates/wp-page-template.tsx'),
         path: uri,
         context: {
           id: id,
@@ -52,7 +52,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     posts.map(async (edge, index) => {
       const { id, uri } = edge.node
       await actions.createPage({
-        component: resolve('./src/templates/post-template.tsx'),
+        component: resolve('./src/templates/wp-post-template.tsx'),
         path: uri,
         context: {
           id: id,
