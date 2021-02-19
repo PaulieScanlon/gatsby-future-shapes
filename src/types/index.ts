@@ -1,3 +1,6 @@
+import { Node } from 'gatsby'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
+
 // currently used for wp-page-template and wp-post-template
 
 export interface ITagItem {
@@ -18,6 +21,26 @@ export interface IPage {
       content: string
       tags: {
         nodes: ITagItem[]
+      }
+    }
+  }
+}
+
+interface FileNode extends Node {
+  childImageSharp?: Node & {
+    gatsbyImageData?: IGatsbyImageData
+  }
+}
+
+export interface IPostItem {
+  node: {
+    title: string
+    link: string
+    thumbnailImage: {
+      image: {
+        altText: string
+        // eslint-disable-next-line
+        localFile: FileNode
       }
     }
   }

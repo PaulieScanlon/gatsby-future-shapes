@@ -7,6 +7,7 @@ export const Header: FunctionComponent = () => {
     <Box as="header" variant="styles.header">
       <GatsbyLink to="/">Index</GatsbyLink>
       <GatsbyLink to="/posts">Posts</GatsbyLink>
+      <GatsbyLink to="/about">About</GatsbyLink>
       <GatsbyLink to="/svg">Svg</GatsbyLink>
     </Box>
   )

@@ -1,7 +1,7 @@
 export default {
   colors: {
     text: '#000000',
-    background: '#ffffff',
+    background: '#efefef',
   },
   fonts: {
     heading: 'system-ui',
@@ -10,7 +10,10 @@ export default {
   sizes: {
     header: '64px',
     container: '840px',
+    full: '100%',
   },
+
+  shadows: ['0px 0px 10px 4px rgba(0,0,0,0.15)'],
 
   styles: {
     root: {
@@ -24,12 +27,25 @@ export default {
         variant: 'links.nav',
       },
     },
+    a: {
+      color: 'text',
+    },
   },
   buttons: {
     primary: {
       backgroundColor: 'text',
       color: 'background',
       cursor: 'pointer',
+    },
+  },
+  cards: {
+    primary: {
+      position: 'relative',
+      boxShadow: 0,
+      a: {
+        variant: 'styles.a',
+        textDecoration: 'none',
+      },
     },
   },
   links: {
