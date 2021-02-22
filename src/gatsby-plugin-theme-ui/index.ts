@@ -4,14 +4,16 @@ export default {
     background: '#efefef',
   },
   fonts: {
-    heading: 'system-ui',
-    body: 'system-ui',
+    heading: 'Helvetica',
+    body: 'Helvetica',
   },
   sizes: {
     header: '64px',
     container: '840px',
     full: '100%',
   },
+
+  space: [0, 2, 4, 8, 16, 24, 32, 64, 128, 256],
 
   shadows: ['0px 0px 10px 4px rgba(0,0,0,0.15)'],
 
@@ -49,13 +51,27 @@ export default {
     },
   },
   links: {
+    color: 'inherit',
     nav: {
+      color: 'inherit',
       p: 2,
     },
   },
   text: {
     bold: {
       fontWeight: 'bold',
+    },
+    heading: {
+      position: 'relative',
+      mb: 7,
+      '::before': {
+        content: `''`,
+        bottom: 0,
+        position: 'absolute',
+        backgroundColor: 'text',
+        height: (theme) => `${theme.space[1]}px`,
+        width: (theme) => `${theme.space[5]}px`,
+      },
     },
   },
   layout: {

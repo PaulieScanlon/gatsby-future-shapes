@@ -5,7 +5,7 @@ export const usePosts = () => {
     allWpPost: { edges },
   } = useStaticQuery(graphql`
     query Posts {
-      allWpPost {
+      allWpPost(sort: { order: DESC, fields: date }) {
         edges {
           node {
             thumbnailImage {
@@ -19,6 +19,7 @@ export const usePosts = () => {
               }
             }
             id
+            date
             link
             title
             tags {

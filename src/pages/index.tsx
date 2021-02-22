@@ -38,8 +38,6 @@ const IndexPage: FunctionComponent = () => {
     )
   }, [])
 
-  console.log({ mpegs })
-
   return (
     <Grid
       sx={{
