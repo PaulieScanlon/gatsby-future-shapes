@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Box, Container, Heading, Text } from 'theme-ui'
+import { Box, Container, Grid, Heading, Text } from 'theme-ui'
 import { Svg } from '../components/svg'
 import { useSvgs } from '../hooks/useSvgs'
 
@@ -18,13 +18,20 @@ const SvgPage: FunctionComponent = () => {
   return (
     <Box>
       <Container>
-        <Heading as="h1">SvgPage</Heading>
-        <Text>Whey! A wordpress driven Svg path!</Text>
-        <Box>
+        <Heading as="h1" variant="styles.h6">
+          Svg
+        </Heading>
+        <Text>Whey! A wordpress driven Svg paths!</Text>
+        <Grid
+          sx={{
+            gap: 6,
+          }}
+        >
           {svgs.map((item: ISvgItem, index: number) => {
             const { path, title } = item.node.svgAttributes
             return (
               <Box key={index}>
+                <Text>{title}</Text>
                 <Box
                   sx={{
                     width: 200,
@@ -37,7 +44,7 @@ const SvgPage: FunctionComponent = () => {
               </Box>
             )
           })}
-        </Box>
+        </Grid>
       </Container>
     </Box>
   )

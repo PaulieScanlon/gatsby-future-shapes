@@ -1,4 +1,6 @@
-import React, { FunctionComponent } from 'react'
+/** @jsx jsx */
+import { FunctionComponent } from 'react'
+import { jsx } from 'theme-ui'
 
 interface ILogoProps {}
 
@@ -7,10 +9,13 @@ export const Logo: FunctionComponent<ILogoProps> = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="currentcolor"
-      viewBox="0 0 200 58"
+      viewBox="0 0 200 60"
       preserveAspectRatio="xMidYMid meet"
       x="0"
       y="0"
+      sx={{
+        filter: 'drop-shadow(1px 1px 1px rgba(255, 255, 250, 1))',
+      }}
     >
       <title>Future Shapes Logo</title>
       <path d="M0.9,26.9V1.8h16.2v2H3.2v9.1h12.6v2H3.2v12H0.9z" />

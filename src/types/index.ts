@@ -22,6 +22,10 @@ export interface IPage {
       tags: {
         nodes: ITagItem[]
       }
+      svgAttributes: {
+        path: string
+        title: string
+      }
     }
   }
 }
