@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Box, Button, Container, Grid, Heading, Text } from 'theme-ui'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
@@ -19,19 +19,26 @@ type IMpegItem = {
 }
 
 const IndexPage: FunctionComponent = () => {
-  const posts = usePosts()
+  const postItems = usePosts()
+  const mpegItems = useMpegs()
 
-  const [mpegs] = useState(
-    useMpegs().map(
-      (item: ISoundItem): IMpegItem => {
-        const { mediaItemUrl } = item.node
-        return {
-          path: mediaItemUrl,
-          audio: new Audio(mediaItemUrl),
-        }
-      },
-    ),
-  )
+  const [mpegs, setMpegs] = useState<IMpegItem[]>([])
+
+  useEffect(() => {
+    setMpegs(
+      mpegItems.map(
+        (item: ISoundItem): IMpegItem => {
+          const { mediaItemUrl } = item.node
+          return {
+            path: mediaItemUrl,
+            audio: new Audio(mediaItemUrl),
+          }
+        },
+      ),
+    )
+  }, [])
+
+  console.log({ mpegs })
 
   return (
     <Grid
@@ -65,7 +72,7 @@ const IndexPage: FunctionComponent = () => {
               gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
             }}
           >
-            {posts.slice(0, 3).map((item: IPostItem, index: number) => {
+            {postItems.slice(0, 3).map((item: IPostItem, index: number) => {
               return <PostTile key={index} {...item} />
             })}
           </Grid>
