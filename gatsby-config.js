@@ -3,6 +3,14 @@ require('dotenv').config({
 })
 
 module.exports = {
+  siteMetadata: {
+    name: `gatsby-future-shapes`,
+    description: `A gatsby-source-wordpress demo`,
+    keywords: [`gatsby`, `gatsbyjs`, `gatsby-source-wordpress`],
+    siteUrl: `https://gatsbyfutureshapes.gatsbyjs.io/`,
+    siteImage: `https://gatsbyfutureshapes.gatsbyjs.io/images/future-shapes-og-image.jpg`,
+    lang: `en-gb`,
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,

@@ -19,10 +19,11 @@ export const PostTile: FunctionComponent<IPostTileProps> = ({
     <Card>
       <GatsbyLink to={link}>
         <Text
+          variant="uppercase"
           sx={{
             position: 'absolute',
-            top: (theme) => `${theme.space[2]}px`,
-            left: (theme) => `${theme.space[2]}px`,
+            top: (theme) => `${theme.space[4]}px`,
+            left: (theme) => `${theme.space[4]}px`,
             zIndex: 1,
           }}
         >

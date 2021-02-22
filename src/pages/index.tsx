@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Box, Button, Container, Grid, Heading, Text } from 'theme-ui'
+import { Box, Button, Container, Grid, Heading, Link, Text } from 'theme-ui'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
 import { useMpegs } from '../hooks/useMpegs'
@@ -38,24 +38,49 @@ const IndexPage: FunctionComponent = () => {
     )
   }, [])
 
-  console.log({ mpegs })
-
   return (
     <Grid
       sx={{
-        gap: 6,
+        gap: 7,
       }}
     >
-      <Box as="section">
+      <Box
+        as="section"
+        sx={{
+          backgroundColor: 'lightGrey',
+          px: [6, 8],
+          py: 8,
+        }}
+      >
         <Box
           sx={{
             mx: 'auto',
-            px: 3,
-            maxWidth: 300,
-            width: ['50%', 'full'],
+            maxWidth: ['full', 380],
           }}
         >
           <Logo />
+          <Text
+            sx={{
+              fontSize: 0,
+              color: 'darkGrey',
+            }}
+          >
+            A{' '}
+            <Link href="https://www.gatsbyjs.com/plugins/gatsby-source-wordpress/" target="_blank" rel="noopener">
+              gatsby-source-wordpress
+            </Link>{' '}
+            demo by
+            <Link
+              href="https://twitter.com/PaulieScanlon"
+              target="_blank"
+              rel="noopener"
+              sx={{
+                color: 'primary',
+              }}
+            >
+              @PaulieScanlon
+            </Link>
+          </Text>
         </Box>
       </Box>
       <Container
@@ -65,10 +90,13 @@ const IndexPage: FunctionComponent = () => {
         }}
       >
         <Box as="section">
-          <Heading as="h2">Latest Posts</Heading>
+          <Heading as="h2" variant="styles.h6">
+            Latest Posts
+          </Heading>
+
           <Grid
             sx={{
-              gap: 4,
+              gap: 6,
               gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
             }}
           >
@@ -79,11 +107,15 @@ const IndexPage: FunctionComponent = () => {
         </Box>
 
         <Box as="section">
-          <Heading as="h2">Promo</Heading>
+          <Heading as="h2" variant="styles.h6">
+            Promo
+          </Heading>
         </Box>
 
         <Box as="section">
-          <Heading as="h2">The Experiment</Heading>
+          <Heading as="h2" variant="styles.h6">
+            The Experiment
+          </Heading>
           <Grid
             sx={{
               gap: 2,

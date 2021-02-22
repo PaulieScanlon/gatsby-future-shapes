@@ -5,19 +5,21 @@ import { usePosts } from '../hooks/usePosts'
 import { IPostItem } from '../types'
 
 const PostsPage: FunctionComponent = () => {
-  const posts = usePosts()
+  const postItems = usePosts()
 
   return (
     <Box>
       <Container>
-        <Heading as="h1">Posts</Heading>
+        <Heading as="h1" variant="styles.h6">
+          Posts
+        </Heading>
         <Grid
           sx={{
-            gap: 4,
+            gap: 6,
             gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
           }}
         >
-          {posts.map((item: IPostItem, index: number) => {
+          {postItems.map((item: IPostItem, index: number) => {
             return <PostTile key={index} {...item} />
           })}
         </Grid>
