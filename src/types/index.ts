@@ -26,7 +26,7 @@ export interface IPage {
   }
 }
 
-interface FileNode extends Node {
+interface IFileNode extends Node {
   childImageSharp?: Node & {
     gatsbyImageData?: IGatsbyImageData
   }
@@ -40,7 +40,7 @@ export interface IPostItem {
       image: {
         altText: string
         // eslint-disable-next-line
-        localFile: FileNode
+        localFile: IFileNode
       }
     }
   }

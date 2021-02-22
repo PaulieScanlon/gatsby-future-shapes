@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Box, Button, Container, Grid, Heading } from 'theme-ui'
+import { Box, Button, Container, Grid, Heading, Text } from 'theme-ui'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
 import { useMpegs } from '../hooks/useMpegs'
@@ -65,12 +65,9 @@ const IndexPage: FunctionComponent = () => {
               gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
             }}
           >
-            {posts
-              .sort((a, b) => b - a)
-              .slice(0, 3)
-              .map((item: IPostItem, index: number) => {
-                return <PostTile key={index} {...item} />
-              })}
+            {posts.slice(0, 3).map((item: IPostItem, index: number) => {
+              return <PostTile key={index} {...item} />
+            })}
           </Grid>
         </Box>
 
@@ -82,7 +79,7 @@ const IndexPage: FunctionComponent = () => {
           <Heading as="h2">The Experiment</Heading>
           <Grid
             sx={{
-              gap: 0,
+              gap: 2,
               gridTemplateColumns: ['1fr 1fr', '1fr 1fr 1fr 1fr'],
             }}
           >
@@ -97,6 +94,9 @@ const IndexPage: FunctionComponent = () => {
           </Grid>
         </Box>
       </Container>
+      <Box as="footer">
+        <Text>Footer</Text>
+      </Box>
     </Grid>
   )
 }
