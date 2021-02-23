@@ -47,7 +47,19 @@ export default {
       letterSpacing: 'body',
       lineHeight: 'body',
       fontSize: 1,
+
+      '.wp-block-columns, .side-by-side': {
+        display: 'grid',
+        gap: 4,
+        gridTemplateColumns: ['1fr', '1fr 1fr'],
+        '.wp-block-column': {},
+      },
     },
+
+    p: {
+      color: 'primary',
+    },
+
     h1: {
       variant: 'text.heading',
       fontSize: 7,
