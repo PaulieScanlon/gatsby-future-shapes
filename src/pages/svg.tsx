@@ -1,28 +1,27 @@
 import React, { FunctionComponent } from 'react'
-import { Box, Container, Grid, Heading, Text } from 'theme-ui'
-import { Svg } from '../components/svg'
-import { useSvgs } from '../hooks/useSvgs'
+import { Box, Container, Heading, Text } from 'theme-ui'
+// import { useSvgs } from '../hooks/useSvgs'
 
-type ISvgItem = {
-  node: {
-    svgAttributes: {
-      path: string
-      title?: string
-    }
-  }
-}
+// type ISvgItem = {
+//   node: {
+//     svgAttributes: {
+//       path: string
+//       title?: string
+//     }
+//   }
+// }
 
 const SvgPage: FunctionComponent = () => {
-  const svgs = useSvgs()
+  // const svgs = useSvgs()
 
   return (
     <Box>
       <Container>
-        <Heading as="h1" variant="styles.h6">
+        <Heading as="h1" variant="styles.h5">
           Svg
         </Heading>
         <Text>Whey! A wordpress driven Svg paths!</Text>
-        <Grid
+        {/* <Grid
           sx={{
             gap: 6,
           }}
@@ -44,7 +43,7 @@ const SvgPage: FunctionComponent = () => {
               </Box>
             )
           })}
-        </Grid>
+        </Grid> */}
       </Container>
     </Box>
   )

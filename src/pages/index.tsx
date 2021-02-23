@@ -1,10 +1,12 @@
+import { YouTube } from 'mdx-embed'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Box, Button, Container, Grid, Heading, Link, Text } from 'theme-ui'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
 import { useMpegs } from '../hooks/useMpegs'
 import { usePosts } from '../hooks/usePosts'
-import { IPostItem } from '../types'
+import { usePromos } from '../hooks/usePromos'
+import { IPostItem, IPromoItem } from '../types'
 
 type ISoundItem = {
   node: {
@@ -21,6 +23,7 @@ type IMpegItem = {
 const IndexPage: FunctionComponent = () => {
   const postItems = usePosts()
   const mpegItems = useMpegs()
+  const promoItems = usePromos()
 
   const [mpegs, setMpegs] = useState<IMpegItem[]>([])
 
@@ -66,18 +69,18 @@ const IndexPage: FunctionComponent = () => {
             }}
           >
             A{' '}
-            <Link href="https://www.gatsbyjs.com/plugins/gatsby-source-wordpress/" target="_blank" rel="noopener">
-              gatsby-source-wordpress
-            </Link>{' '}
-            demo by
             <Link
-              href="https://twitter.com/PaulieScanlon"
+              href="https://www.gatsbyjs.com/plugins/gatsby-source-wordpress/"
               target="_blank"
               rel="noopener"
               sx={{
-                color: 'primary',
+                color: 'darkGrey',
               }}
             >
+              gatsby-source-wordpress
+            </Link>{' '}
+            demo by
+            <Link href="https://twitter.com/PaulieScanlon" target="_blank" rel="noopener">
               @PaulieScanlon
             </Link>
           </Text>
@@ -86,11 +89,11 @@ const IndexPage: FunctionComponent = () => {
       <Container
         sx={{
           display: 'grid',
-          gap: 6,
+          gap: 8,
         }}
       >
         <Box as="section">
-          <Heading as="h2" variant="styles.h6">
+          <Heading as="h2" variant="styles.h5">
             Latest Posts
           </Heading>
 
@@ -107,13 +110,41 @@ const IndexPage: FunctionComponent = () => {
         </Box>
 
         <Box as="section">
-          <Heading as="h2" variant="styles.h6">
+          <Heading as="h2" variant="styles.h5">
             Promo
           </Heading>
+          <Box>
+            {promoItems.slice(0, 1).map((item: IPromoItem, index: number) => {
+              const { title, description, link, id } = item.node.youTubeAttributes
+
+              return (
+                <Grid
+                  key={index}
+                  sx={{
+                    gap: 4,
+                    gridTemplateColumns: ['1fr', '1fr 1fr', '2fr 1fr'],
+                  }}
+                >
+                  <Box>
+                    <Heading as="h3" variant="styles.h6">
+                      {title}
+                    </Heading>
+                    <Text sx={{ mb: 3 }}>{description}</Text>
+                    <Link href={link} target="_blank" rel="noopener" sx={{ fontSize: 0, textTransform: 'uppercase' }}>
+                      more info
+                    </Link>
+                  </Box>
+                  <Box>
+                    <YouTube youTubeId={id} />
+                  </Box>
+                </Grid>
+              )
+            })}
+          </Box>
         </Box>
 
         <Box as="section">
-          <Heading as="h2" variant="styles.h6">
+          <Heading as="h2" variant="styles.h5">
             The Experiment
           </Heading>
           <Grid

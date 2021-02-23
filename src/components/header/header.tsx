@@ -24,7 +24,6 @@ export const Header: FunctionComponent = () => {
         >
           <GatsbyLink to="/posts">Posts</GatsbyLink>
           <GatsbyLink to="/about">About</GatsbyLink>
-          {/* <GatsbyLink to="/svg">Svg</GatsbyLink> */}
         </Grid>
       </Flex>
     </Box>

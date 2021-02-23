@@ -10,7 +10,7 @@ const PostsPage: FunctionComponent = () => {
   return (
     <Box>
       <Container>
-        <Heading as="h1" variant="styles.h6">
+        <Heading as="h1" variant="styles.h5">
           Posts
         </Heading>
         <Grid

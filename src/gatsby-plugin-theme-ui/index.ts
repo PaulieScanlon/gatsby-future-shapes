@@ -48,16 +48,11 @@ export default {
       lineHeight: 'body',
       fontSize: 1,
 
-      '.wp-block-columns, .side-by-side': {
+      '.side-by-side': {
         display: 'grid',
         gap: 4,
         gridTemplateColumns: ['1fr', '1fr 1fr'],
-        '.wp-block-column': {},
       },
-    },
-
-    p: {
-      color: 'primary',
     },
 
     h1: {
@@ -71,24 +66,38 @@ export default {
     },
     h2: {
       variant: 'text.heading',
+      '::before': {
+        variant: 'text.before',
+      },
     },
     h3: {
       variant: 'text.heading',
       fontSize: 5,
       lineHeight: 'h3',
+      '::before': {
+        variant: 'text.before',
+      },
     },
     h4: {
       variant: 'text.heading',
       fontSize: 4,
       lineHeight: 'h4',
+      '::before': {
+        variant: 'text.before',
+      },
     },
     h5: {
       variant: 'text.heading',
       fontSize: 3,
       lineHeight: 'h5',
+      '::before': {
+        variant: 'text.before',
+      },
     },
     h6: {
       variant: 'text.heading',
+      letterSpacing: 'body',
+      mb: 0,
       fontSize: 2,
       lineHeight: 'h6',
     },
@@ -102,7 +111,7 @@ export default {
       },
     },
     a: {
-      color: 'inherit',
+      color: 'primary',
     },
   },
   buttons: {
@@ -181,9 +190,6 @@ export default {
       position: 'relative',
       textTransform: 'uppercase',
       mb: 6,
-      '::before': {
-        variant: 'text.before',
-      },
     },
   },
   layout: {

@@ -49,3 +49,14 @@ export interface IPostItem {
     }
   }
 }
+
+export interface IPromoItem {
+  node: {
+    youTubeAttributes: {
+      title: string
+      description: string
+      link?: string
+      id: string
+    }
+  }
+}
