@@ -11,7 +11,7 @@ const WpPageTemplate: FunctionComponent<IPageTemplate> = ({ data: { page } }) =>
   return (
     <Box>
       <Container>
-        <Heading as="h1" variant="styles.h6">
+        <Heading as="h1" variant="styles.h5">
           {title}
         </Heading>
         <Text>{`id: ${id}`}</Text>

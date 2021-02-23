@@ -25,7 +25,7 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
         {localFile ? <GatsbyImage alt={altText} image={getImage(localFile)} /> : null}
       </Box>
       <Container>
-        <Heading as="h1" variant="styles.h6">
+        <Heading as="h1" variant="styles.h5">
           {title}
         </Heading>
 

@@ -4,7 +4,7 @@ import { Container, Heading, Text } from 'theme-ui'
 const NotFoundPage: FunctionComponent = () => {
   return (
     <Container>
-      <Heading as="h1" variant="styles.h6">
+      <Heading as="h1" variant="styles.h5">
         404
       </Heading>
       <Text>
