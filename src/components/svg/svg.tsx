@@ -8,7 +8,7 @@ interface ISvgProps {
   /** The icon title */
   title?: string
   /** Theme UI - sx */
-  sx: SxStyleProp
+  sx?: SxStyleProp
 }
 
 export const Svg: FunctionComponent<ISvgProps> = ({ path, title, sx }) => {

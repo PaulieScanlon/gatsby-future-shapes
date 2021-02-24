@@ -1,45 +1,16 @@
 import { YouTube } from 'mdx-embed'
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Box, Button, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
+import React, { FunctionComponent } from 'react'
+import { Box, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
+import { Experiment } from '../components/experiment/experiment'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
-import { useMpegs } from '../hooks/useMpegs'
 import { usePosts } from '../hooks/usePosts'
 import { usePromos } from '../hooks/usePromos'
 import { IPostItem, IPromoItem } from '../types'
 
-type ISoundItem = {
-  node: {
-    mediaItemUrl: string
-    mimeType: string
-  }
-}
-
-type IMpegItem = {
-  path: string
-  audio: HTMLAudioElement
-}
-
 const IndexPage: FunctionComponent = () => {
   const postItems = usePosts()
-  const mpegItems = useMpegs()
   const promoItems = usePromos()
-
-  const [mpegs, setMpegs] = useState<IMpegItem[]>([])
-
-  useEffect(() => {
-    setMpegs(
-      mpegItems.map(
-        (item: ISoundItem): IMpegItem => {
-          const { mediaItemUrl } = item.node
-          return {
-            path: mediaItemUrl,
-            audio: new Audio(mediaItemUrl),
-          }
-        },
-      ),
-    )
-  }, [])
 
   return (
     <Grid
@@ -155,21 +126,14 @@ const IndexPage: FunctionComponent = () => {
           <Heading as="h2" variant="styles.h5">
             The Experiment
           </Heading>
-          <Grid
+          <Text>Press a key or click/tap a button</Text>
+          <Box
             sx={{
-              gap: 2,
-              gridTemplateColumns: ['1fr 1fr', '1fr 1fr 1fr 1fr'],
+              py: 6,
             }}
           >
-            {mpegs.map((item: IMpegItem, index: number) => {
-              const { audio } = item
-              return (
-                <Button key={index} onClick={() => audio.play()}>
-                  {`play sound ${index}`}
-                </Button>
-              )
-            })}
-          </Grid>
+            <Experiment />
+          </Box>
         </Container>
       </Flex>
 

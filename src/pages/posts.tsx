@@ -5,7 +5,7 @@ import { usePosts } from '../hooks/usePosts'
 import { IPostItem } from '../types'
 
 const PostsPage: FunctionComponent = () => {
-  const postItems = usePosts()
+  const postItems: IPostItem[] = usePosts()
 
   return (
     <Box>
