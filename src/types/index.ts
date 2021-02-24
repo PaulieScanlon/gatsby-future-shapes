@@ -60,3 +60,19 @@ export interface IPromoItem {
     }
   }
 }
+
+export interface ISoundItem {
+  node: {
+    mediaItemUrl: string
+    mimeType: string
+  }
+}
+
+export interface ISvgItem {
+  node: {
+    svgAttributes: {
+      title: string
+      path: string
+    }
+  }
+}

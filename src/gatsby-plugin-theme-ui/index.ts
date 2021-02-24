@@ -4,9 +4,11 @@ export default {
     background: '#ffffff',
     primary: '#c681ba',
     primaryLight: '#e8cde3',
+    secondary: '#4cc1bb',
     lightGrey: '#efefef',
     midGrey: '#c5c5c5',
     darkGrey: '#535353',
+    shapes: ['#c681ba', '#4cc1bb', '#5556a8', '#f25e5e', '#fecc09'],
   },
   fonts: {
     heading: 'Helvetica, Arial',
@@ -115,10 +117,13 @@ export default {
     },
   },
   buttons: {
-    primary: {
-      backgroundColor: 'text',
-      color: 'background',
+    icon: {
+      backgroundColor: 'transparent',
+      color: 'primary',
       cursor: 'pointer',
+      ':disabled': {
+        color: 'lightGrey',
+      },
     },
   },
   cards: {
