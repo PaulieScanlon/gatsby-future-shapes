@@ -19,7 +19,7 @@ export const Experiment: FunctionComponent = () => {
   return (
     <Grid
       sx={{
-        gap: 2,
+        gap: '0px',
         gridTemplateColumns: ['1fr 1fr 1fr', '1fr 1fr 1fr 1fr 1fr'],
       }}
     >

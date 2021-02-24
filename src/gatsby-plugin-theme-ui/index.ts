@@ -8,7 +8,8 @@ export default {
     lightGrey: '#efefef',
     midGrey: '#c5c5c5',
     darkGrey: '#535353',
-    shapes: ['#c681ba', '#4cc1bb', '#5556a8', '#f25e5e', '#fecc09'],
+    solids: ['#c681ba', '#4cc1bb', '#5556a8', '#f25e5e', '#fecc09'],
+    shades: ['#d7a7cf', '#82d4d0', '#8889c2', '#f68f8f', '#fedb53'],
   },
   fonts: {
     heading: 'Helvetica, Arial',
@@ -121,8 +122,17 @@ export default {
       backgroundColor: 'transparent',
       color: 'primary',
       cursor: 'pointer',
+      p: '0px',
+      width: '100%',
+      height: 'auto',
+      overflow: 'hidden',
+      borderRadius: '0px',
       ':disabled': {
-        color: 'lightGrey',
+        color: 'transparent',
+      },
+      ':focus': {
+        // boxShadow: '0px 0px 1px 3px rgba(0,0,255,0.90)',
+        // outline: 'none',
       },
     },
   },

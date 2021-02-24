@@ -6,8 +6,6 @@ import { ISvgItem } from '../../types'
 import { getRandomInt } from '../../utils'
 import { Svg } from '../svg'
 
-console.log(theme)
-
 interface ISoundTileProps {
   /** index */
   index: number
@@ -39,14 +37,19 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
     duration: 0,
   })
   const [svgObject, setSvgObject] = useState<ISvgItem>(svgItems[getRandomInt(svgItems.length)])
-  const [color, setColor] = useState(theme.colors.shapes[getRandomInt(theme.colors.shapes.length)])
+  const [color, setColor] = useState(theme.colors.solids[getRandomInt(theme.colors.solids.length)])
+  const [backgroundColor, setBackgroundColor] = useState(theme.colors.shades[getRandomInt(theme.colors.shades.length)])
+  const [transform, setTransform] = useState(
+    `scale(0.${getRandomInt(10)}) ${getRandomInt(2) % 2 ? 'rotate(90deg)' : 'rotate(180deg)'}`,
+  )
 
   const playSound = () => {
-    console.log('playSound')
     audioObject.audio.play()
     setIsPlaying(true)
     setSvgObject(svgItems[getRandomInt(svgItems.length)])
-    setColor(theme.colors.shapes[getRandomInt(theme.colors.shapes.length)])
+    setColor(theme.colors.solids[getRandomInt(theme.colors.solids.length)])
+    setBackgroundColor(theme.colors.shades[getRandomInt(theme.colors.shades.length)])
+    setTransform(`scale(0.${getRandomInt(10)}) ${getRandomInt(2) % 2 ? 'rotate(90deg)' : 'rotate(180deg)'}`)
   }
 
   useEffect(() => {
@@ -56,7 +59,7 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
   }, [forcePlay])
 
   useEffect(() => {
-    const audio = new Audio(mediaItemUrl)
+    let audio = new Audio(mediaItemUrl)
 
     audio.addEventListener('canplaythrough', (event: Event) => {
       const { returnValue } = event
@@ -72,6 +75,11 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
     audio.addEventListener('ended', () => {
       setIsPlaying(false)
     })
+
+    audio.addEventListener('error', () => {
+      console.log('error')
+      audio = new Audio(mediaItemUrl)
+    })
   }, [])
 
   return (
@@ -82,11 +90,18 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
       data-index={index}
       sx={{
         color: color,
-        width: '100%',
-        height: 'auto',
+        backgroundColor: backgroundColor,
       }}
     >
-      <Svg {...svgObject.node.svgAttributes} />
+      <Svg
+        {...svgObject.node.svgAttributes}
+        sx={{
+          transform: transform,
+          transition: `${audioObject.duration / 3}s ease-out all`,
+          // boxShadow: 0,
+          filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
+        }}
+      />
     </IconButton>
   )
 }
