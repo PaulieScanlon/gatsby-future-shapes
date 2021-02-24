@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import { IconButton } from 'theme-ui'
+import React, { Fragment, FunctionComponent, useEffect, useState } from 'react'
+import { Box, IconButton } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 import { useSvgs } from '../../hooks/useSvgs'
 import { ISvgItem } from '../../types'
@@ -93,24 +93,31 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
   }, [])
 
   return (
-    <IconButton
-      key={index}
-      disabled={!audioObject.isLoaded || isPlaying}
-      onClick={playSound}
-      data-index={index}
-      sx={{
-        color: color,
-        backgroundColor: backgroundColor,
-      }}
-    >
-      <Svg
-        {...svgObject.node.svgAttributes}
+    <Fragment>
+      <IconButton
+        key={index}
+        disabled={!audioObject.isLoaded || isPlaying}
+        onClick={playSound}
+        data-index={index}
         sx={{
-          transform: transform,
-          transition: `${audioObject.duration / 3}s ease-out all`,
-          filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
+          color: color,
+          backgroundColor: backgroundColor,
         }}
-      />
-    </IconButton>
+      >
+        <Svg
+          {...svgObject.node.svgAttributes}
+          sx={{
+            transform: transform,
+            transition: `${audioObject.duration / 3}s ease-out all`,
+            filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
+          }}
+        />
+      </IconButton>
+      <Box>
+        <audio controls>
+          <source src={mediaItemUrl} type="audio/mpeg" />
+        </audio>
+      </Box>
+    </Fragment>
   )
 }
