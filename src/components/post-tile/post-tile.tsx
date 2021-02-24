@@ -22,7 +22,7 @@ export const PostTile: FunctionComponent<IPostTileProps> = ({
           variant="uppercase"
           sx={{
             position: 'absolute',
-            top: (theme) => `${theme.space[4]}px`,
+            top: (theme) => `${theme.space[3]}px`,
             left: (theme) => `${theme.space[4]}px`,
             zIndex: 1,
           }}

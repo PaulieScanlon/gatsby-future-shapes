@@ -32,7 +32,8 @@ export default {
     body: '1.2rem',
   },
   sizes: {
-    header: '64px',
+    headerH: '64px',
+    headerW: '1340px',
     container: '840px',
     full: '100%',
   },
@@ -47,11 +48,8 @@ export default {
       letterSpacing: 'body',
       lineHeight: 'body',
       fontSize: 1,
-
-      '.side-by-side': {
-        display: 'grid',
-        gap: 4,
-        gridTemplateColumns: ['1fr', '1fr 1fr'],
+      '.mdx-embed': {
+        boxShadow: 0,
       },
     },
 
@@ -88,7 +86,7 @@ export default {
     },
     h5: {
       variant: 'text.heading',
-      fontSize: 3,
+      fontSize: [2, 3],
       lineHeight: 'h5',
       '::before': {
         variant: 'text.before',
@@ -97,14 +95,16 @@ export default {
     h6: {
       variant: 'text.heading',
       letterSpacing: 'body',
-      mb: 0,
+      mb: 3,
       fontSize: 2,
       lineHeight: 'h6',
     },
     header: {
       alignItems: 'center',
       display: 'flex',
-      height: 'header',
+      height: 'headerH',
+      maxWidth: 'headerW',
+      mx: 'auto',
       px: [2, 4],
       a: {
         variant: 'links.nav',
@@ -127,6 +127,8 @@ export default {
       boxShadow: 0,
       a: {
         variant: 'styles.a',
+        color: 'text',
+        fontWeight: 'heading',
         textDecoration: 'none',
       },
     },

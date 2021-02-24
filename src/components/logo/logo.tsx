@@ -14,6 +14,8 @@ export const Logo: FunctionComponent<ILogoProps> = () => {
       x="0"
       y="0"
       sx={{
+        maxWidth: 380,
+        mx: 'auto',
         filter: 'drop-shadow(1px 1px 1px rgba(255, 255, 250, 1))',
       }}
     >
