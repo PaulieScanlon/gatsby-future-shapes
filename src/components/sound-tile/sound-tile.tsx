@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from 'react'
-import { Box, IconButton } from 'theme-ui'
+import { IconButton } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 import { useSvgs } from '../../hooks/useSvgs'
 import { ISvgItem } from '../../types'
@@ -110,14 +110,16 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
             transform: transform,
             transition: `${audioObject.duration / 3}s ease-out all`,
             filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
+            width: '100%',
+            height: 'auto',
           }}
         />
       </IconButton>
-      <Box>
+      {/* <Box>
         <audio controls>
           <source src={mediaItemUrl} type="audio/mpeg" />
         </audio>
-      </Box>
+      </Box> */}
     </Fragment>
   )
 }
