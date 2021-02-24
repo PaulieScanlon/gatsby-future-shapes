@@ -1,6 +1,6 @@
 import { YouTube } from 'mdx-embed'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Box, Button, Container, Grid, Heading, Link, Text } from 'theme-ui'
+import { Box, Button, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
 import { useMpegs } from '../hooks/useMpegs'
@@ -47,18 +47,18 @@ const IndexPage: FunctionComponent = () => {
         gap: 7,
       }}
     >
-      <Box
+      <Flex
         as="section"
         sx={{
+          alignItems: 'center',
           backgroundColor: 'lightGrey',
-          px: [6, 8],
-          py: 8,
+          minHeight: '100%',
+          height: ['30vh', '50vh'],
         }}
       >
-        <Box
+        <Container
           sx={{
-            mx: 'auto',
-            maxWidth: ['full', 380],
+            textAlign: 'center',
           }}
         >
           <Logo />
@@ -66,6 +66,7 @@ const IndexPage: FunctionComponent = () => {
             sx={{
               fontSize: 0,
               color: 'darkGrey',
+              textAlign: 'center',
             }}
           >
             A{' '}
@@ -84,15 +85,11 @@ const IndexPage: FunctionComponent = () => {
               @PaulieScanlon
             </Link>
           </Text>
-        </Box>
-      </Box>
-      <Container
-        sx={{
-          display: 'grid',
-          gap: 8,
-        }}
-      >
-        <Box as="section">
+        </Container>
+      </Flex>
+
+      <Box as="section" sx={{ alignItems: 'center' }}>
+        <Container>
           <Heading as="h2" variant="styles.h5">
             Latest Posts
           </Heading>
@@ -107,9 +104,18 @@ const IndexPage: FunctionComponent = () => {
               return <PostTile key={index} {...item} />
             })}
           </Grid>
-        </Box>
+        </Container>
+      </Box>
 
-        <Box as="section">
+      <Flex
+        as="section"
+        sx={{
+          alignItems: 'center',
+          backgroundColor: 'lightGrey',
+          py: 7,
+        }}
+      >
+        <Container>
           <Heading as="h2" variant="styles.h5">
             Promo
           </Heading>
@@ -141,9 +147,11 @@ const IndexPage: FunctionComponent = () => {
               )
             })}
           </Box>
-        </Box>
+        </Container>
+      </Flex>
 
-        <Box as="section">
+      <Flex as="section" sx={{ alignItems: 'center' }}>
+        <Container>
           <Heading as="h2" variant="styles.h5">
             The Experiment
           </Heading>
@@ -162,11 +170,14 @@ const IndexPage: FunctionComponent = () => {
               )
             })}
           </Grid>
-        </Box>
-      </Container>
-      <Box as="footer">
-        <Text>Footer</Text>
-      </Box>
+        </Container>
+      </Flex>
+
+      <Flex as="footer" sx={{ alignItems: 'center' }}>
+        <Container>
+          <Text>Footer</Text>
+        </Container>
+      </Flex>
     </Grid>
   )
 }
