@@ -6,7 +6,7 @@ import { Svg } from '../svg'
 
 const ROTATE = 'rotate'
 const ROTATE_DEFAULT_VALUE = 0
-const SCALE_DEFAULT_VALUE = 100
+const SCALE_DEFAULT_VALUE = 95
 
 interface IModifierProps {
   /** svgAttributes */
@@ -106,10 +106,6 @@ export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tag
 
   return (
     <Box>
-      {/* <Box>
-          <pre>{JSON.stringify(cssTransforms, null, 2)}</pre>
-        </Box> */}
-
       {cssTransforms.values ? (
         <Grid
           sx={{
@@ -154,14 +150,21 @@ export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tag
               )
             })}
           </Grid>
-          <Svg
-            {...svgAttributes}
+          <Box
             sx={{
-              color: 'primary',
-              transformOrigin: 'center center',
-              transform: cssTransforms.css,
+              boxShadow: 0,
+              overflow: 'hidden',
             }}
-          />
+          >
+            <Svg
+              {...svgAttributes}
+              sx={{
+                color: 'primary',
+                transformOrigin: 'center center',
+                transform: cssTransforms.css,
+              }}
+            />
+          </Box>
         </Grid>
       ) : null}
     </Box>

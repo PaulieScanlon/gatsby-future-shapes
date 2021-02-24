@@ -1,18 +1,26 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Box, Grid, Text } from 'theme-ui'
+import { Grid } from 'theme-ui'
 import { useMpegs } from '../../hooks/useMpegs'
 import { ISoundItem } from '../../types'
 import { getRandomInt } from '../../utils'
 import { SoundTile } from '../sound-tile/sound-tile'
 
+const excludedKeys = ['Space']
+
 export const Experiment: FunctionComponent = () => {
-  const mpegItems: ISoundItem[] = useMpegs().slice(0, 15)
+  const mpegItems: ISoundItem[] = useMpegs()
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 15)
 
   const [randNum, setRandNum] = useState(null)
 
   useEffect(() => {
-    document.addEventListener('keypress', () => {
-      setRandNum(getRandomInt(mpegItems.length))
+    document.addEventListener('keypress', (event: KeyboardEvent) => {
+      if (excludedKeys.includes(event.code)) {
+        event.preventDefault()
+      } else {
+        setRandNum(getRandomInt(mpegItems.length))
+      }
     })
   }, [])
 
@@ -41,7 +49,7 @@ export const Experiment: FunctionComponent = () => {
           )
         })}
       </Grid>
-      <Box>
+      {/* <Box>
         <Text>Debug</Text>
         <Box as="ul">
           {mpegItems.map((item: ISoundItem, index: number) => {
@@ -49,6 +57,7 @@ export const Experiment: FunctionComponent = () => {
 
             return (
               <Box as="li" key={index} sx={{ fontSize: '8px' }}>
+                <Text>{index}</Text>
                 <Text>{mediaItemUrl}</Text>
                 <audio controls>
                   <source src={mediaItemUrl} type={mimeType} />
@@ -58,7 +67,7 @@ export const Experiment: FunctionComponent = () => {
             )
           })}
         </Box>
-      </Box>
+      </Box> */}
     </Grid>
   )
 }

@@ -28,7 +28,6 @@ interface IAudioObject {
 
 export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItemUrl, forcePlay = false }) => {
   const svgItems: ISvgItem[] = useSvgs()
-
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioObject, setAudioObject] = useState<IAudioObject>({
     path: '',
@@ -36,20 +35,24 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
     isLoaded: false,
     duration: 0,
   })
-  const [svgObject, setSvgObject] = useState<ISvgItem>(svgItems[getRandomInt(svgItems.length)])
-  const [color, setColor] = useState(theme.colors.solids[getRandomInt(theme.colors.solids.length)])
-  const [backgroundColor, setBackgroundColor] = useState(theme.colors.shades[getRandomInt(theme.colors.shades.length)])
-  const [transform, setTransform] = useState(
-    `scale(0.${getRandomInt(10)}) ${getRandomInt(2) % 2 ? 'rotate(90deg)' : 'rotate(180deg)'}`,
-  )
+
+  const getTransforms = () =>
+    `scale(0.${getRandomInt(100)}) ${getRandomInt(2) % 2 ? 'rotate(90deg)' : 'rotate(180deg)'}`
+  const getRandomColor = (themeKey: string) => theme.colors[themeKey][getRandomInt(theme.colors[themeKey].length)]
+  const getRandomSvg = () => svgItems[getRandomInt(svgItems.length)]
+
+  const [svgObject, setSvgObject] = useState<ISvgItem>(getRandomSvg())
+  const [color, setColor] = useState(getRandomColor('solids'))
+  const [backgroundColor, setBackgroundColor] = useState(getRandomColor('shades'))
+  const [transform, setTransform] = useState(getTransforms())
 
   const playSound = () => {
     audioObject.audio.play()
     setIsPlaying(true)
-    setSvgObject(svgItems[getRandomInt(svgItems.length)])
-    setColor(theme.colors.solids[getRandomInt(theme.colors.solids.length)])
-    setBackgroundColor(theme.colors.shades[getRandomInt(theme.colors.shades.length)])
-    setTransform(`scale(0.${getRandomInt(10)}) ${getRandomInt(2) % 2 ? 'rotate(90deg)' : 'rotate(180deg)'}`)
+    setSvgObject(getRandomSvg())
+    setColor(getRandomColor('solids'))
+    setBackgroundColor(getRandomColor('shades'))
+    setTransform(getTransforms())
   }
 
   useEffect(() => {
@@ -61,15 +64,22 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
   useEffect(() => {
     let audio = new Audio(mediaItemUrl)
 
-    audio.addEventListener('canplaythrough', (event: Event) => {
-      const { returnValue } = event
-      // audio.volume = 1
-      setAudioObject({
-        path: mediaItemUrl,
-        audio: audio,
-        isLoaded: returnValue,
-        duration: audio.duration,
-      })
+    // @TODO not sure if canplaythroug or canplay fire on iOS
+    // audio.addEventListener('canplay', () => {
+    //   // audio.volume = 1
+    //   setAudioObject({
+    //     path: mediaItemUrl,
+    //     audio: audio,
+    //     isLoaded: true,
+    //     duration: audio.duration,
+    //   })
+    // })
+
+    setAudioObject({
+      path: mediaItemUrl,
+      audio: audio,
+      isLoaded: true,
+      duration: 1,
     })
 
     audio.addEventListener('ended', () => {
@@ -98,7 +108,6 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
         sx={{
           transform: transform,
           transition: `${audioObject.duration / 3}s ease-out all`,
-          // boxShadow: 0,
           filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
         }}
       />

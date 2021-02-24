@@ -8,8 +8,8 @@ export default {
     lightGrey: '#efefef',
     midGrey: '#c5c5c5',
     darkGrey: '#535353',
-    solids: ['#c681ba', '#4cc1bb', '#5556a8', '#f25e5e', '#fecc09'],
-    shades: ['#d7a7cf', '#82d4d0', '#8889c2', '#f68f8f', '#fedb53'],
+    solids: ['#c681ba', '#4cc1bb', '#5556a8', '#f25e5e', '#fecc09', '#64b5f6'],
+    shades: ['#d7a7cf', '#82d4d0', '#8889c2', '#f68f8f', '#fedb53', '#c1e1fb'],
   },
   fonts: {
     heading: 'Helvetica, Arial',
