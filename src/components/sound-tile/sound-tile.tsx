@@ -64,7 +64,7 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
   useEffect(() => {
     let audio = new Audio(mediaItemUrl)
 
-    audio.addEventListener('canplaythrough', () => {
+    audio.addEventListener('canplay', () => {
       // audio.volume = 1
       setAudioObject({
         path: mediaItemUrl,
