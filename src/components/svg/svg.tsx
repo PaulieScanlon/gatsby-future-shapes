@@ -20,6 +20,8 @@ export const Svg: FunctionComponent<ISvgProps> = ({ path, title, sx }) => {
       preserveAspectRatio="xMidYMid meet"
       x="0"
       y="0"
+      width="24px"
+      height="24px"
       sx={{
         ...sx,
       }}

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { Fragment, FunctionComponent, useEffect, useState } from 'react'
 import { IconButton } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 import { useSvgs } from '../../hooks/useSvgs'
@@ -64,7 +64,7 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
   useEffect(() => {
     let audio = new Audio(mediaItemUrl)
 
-    // @TODO not sure if canplaythroug or canplay fire on iOS
+    // @TODO not sure if canplaythrough or canplay fire on iOS
     // audio.addEventListener('canplay', () => {
     //   // audio.volume = 1
     //   setAudioObject({
@@ -93,24 +93,28 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
   }, [])
 
   return (
-    <IconButton
-      key={index}
-      disabled={!audioObject.isLoaded || isPlaying}
-      onClick={playSound}
-      data-index={index}
-      sx={{
-        color: color,
-        backgroundColor: backgroundColor,
-      }}
-    >
-      <Svg
-        {...svgObject.node.svgAttributes}
+    <Fragment>
+      <IconButton
+        key={index}
+        disabled={!audioObject.isLoaded || isPlaying}
+        onClick={playSound}
+        data-index={index}
         sx={{
-          transform: transform,
-          transition: `${audioObject.duration / 3}s ease-out all`,
-          filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
+          color: color,
+          backgroundColor: backgroundColor,
         }}
-      />
-    </IconButton>
+      >
+        <Svg
+          {...svgObject.node.svgAttributes}
+          sx={{
+            transform: transform,
+            transition: `${audioObject.duration / 3}s ease-out all`,
+            filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
+            width: '100%',
+            height: 'auto',
+          }}
+        />
+      </IconButton>
+    </Fragment>
   )
 }

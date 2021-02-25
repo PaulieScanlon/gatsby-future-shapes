@@ -162,6 +162,8 @@ export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tag
                 color: 'primary',
                 transformOrigin: 'center center',
                 transform: cssTransforms.css,
+                width: '100%',
+                height: 'auto',
               }}
             />
           </Box>

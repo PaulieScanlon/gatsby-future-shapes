@@ -5,18 +5,19 @@ import { ISoundItem } from '../../types'
 import { getRandomInt } from '../../utils'
 import { SoundTile } from '../sound-tile/sound-tile'
 
-const excludedKeys = ['Space']
+const EXCLUDED_KEYS = ['Space']
+const MAX_TILES = 15
 
 export const Experiment: FunctionComponent = () => {
   const mpegItems: ISoundItem[] = useMpegs()
     .sort(() => 0.5 - Math.random())
-    .slice(0, 15)
+    .slice(0, MAX_TILES)
 
   const [randNum, setRandNum] = useState(null)
 
   useEffect(() => {
     document.addEventListener('keypress', (event: KeyboardEvent) => {
-      if (excludedKeys.includes(event.code)) {
+      if (EXCLUDED_KEYS.includes(event.code)) {
         event.preventDefault()
       } else {
         setRandNum(getRandomInt(mpegItems.length))
@@ -49,25 +50,6 @@ export const Experiment: FunctionComponent = () => {
           )
         })}
       </Grid>
-      {/* <Box>
-        <Text>Debug</Text>
-        <Box as="ul">
-          {mpegItems.map((item: ISoundItem, index: number) => {
-            const { mediaItemUrl, mimeType } = item.node
-
-            return (
-              <Box as="li" key={index} sx={{ fontSize: '8px' }}>
-                <Text>{index}</Text>
-                <Text>{mediaItemUrl}</Text>
-                <audio controls>
-                  <source src={mediaItemUrl} type={mimeType} />
-                  Your browser does not support the audio element.
-                </audio>
-              </Box>
-            )
-          })}
-        </Box>
-      </Box> */}
     </Grid>
   )
 }
