@@ -64,14 +64,22 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
   useEffect(() => {
     let audio = new Audio(mediaItemUrl)
 
-    audio.addEventListener('canplay', () => {
-      // audio.volume = 1
-      setAudioObject({
-        path: mediaItemUrl,
-        audio: audio,
-        isLoaded: true,
-        duration: audio.duration,
-      })
+    // @TODO not sure if canplaythrough or canplay fire on iOS
+    // audio.addEventListener('canplay', () => {
+    //   // audio.volume = 1
+    //   setAudioObject({
+    //     path: mediaItemUrl,
+    //     audio: audio,
+    //     isLoaded: true,
+    //     duration: audio.duration,
+    //   })
+    // })
+
+    setAudioObject({
+      path: mediaItemUrl,
+      audio: audio,
+      isLoaded: true,
+      duration: 1,
     })
 
     audio.addEventListener('ended', () => {
