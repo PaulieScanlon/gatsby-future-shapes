@@ -115,11 +115,6 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = ({ index, mediaItem
           }}
         />
       </IconButton>
-      {/* <Box>
-        <audio controls>
-          <source src={mediaItemUrl} type="audio/mpeg" />
-        </audio>
-      </Box> */}
     </Fragment>
   )
 }
