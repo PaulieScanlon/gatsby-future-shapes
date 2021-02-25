@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent, memo } from 'react'
 import { jsx, SxStyleProp } from 'theme-ui'
-// import { getRandomInt } from '../../utils'
 
 interface ISvgProps {
   /** The icon path */
