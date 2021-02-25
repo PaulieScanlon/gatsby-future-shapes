@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { FunctionComponent } from 'react'
+import { FunctionComponent, memo } from 'react'
 import { jsx, SxStyleProp } from 'theme-ui'
 
 interface ISvgProps {
@@ -11,11 +11,10 @@ interface ISvgProps {
   sx?: SxStyleProp
 }
 
-export const Svg: FunctionComponent<ISvgProps> = ({ path, title, sx }) => {
+export const Svg: FunctionComponent<ISvgProps> = memo(({ path, title, sx }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="currentcolor"
       viewBox="0 0 24 24"
       preserveAspectRatio="xMidYMid meet"
       x="0"
@@ -31,4 +30,4 @@ export const Svg: FunctionComponent<ISvgProps> = ({ path, title, sx }) => {
       <path d="M0 0h24v24H0z" fill="none" />
     </svg>
   )
-}
+})

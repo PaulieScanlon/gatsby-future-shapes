@@ -6,7 +6,7 @@ import { getRandomInt } from '../../utils'
 import { SoundTile } from '../sound-tile/sound-tile'
 
 const EXCLUDED_KEYS = ['Space']
-const MAX_TILES = 15
+const MAX_TILES = 24
 
 export const Experiment: FunctionComponent = () => {
   const mpegItems: ISoundItem[] = useMpegs()
@@ -34,7 +34,7 @@ export const Experiment: FunctionComponent = () => {
       <Grid
         sx={{
           gap: '0px',
-          gridTemplateColumns: ['1fr 1fr 1fr', '1fr 1fr 1fr 1fr 1fr'],
+          gridTemplateColumns: ['1fr 1fr 1fr', '1fr 1fr 1fr 1fr 1fr 1fr '],
         }}
       >
         {mpegItems.map((item: ISoundItem, index: number) => {
