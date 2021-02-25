@@ -30,8 +30,7 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
         </Heading>
 
         <Modifier svgAttributes={svgAttributes} tags={tags} />
-
-        <Box>{parse(content)}</Box>
+        {content ? <Box>{parse(content)}</Box> : null}
       </Container>
     </Box>
   )
