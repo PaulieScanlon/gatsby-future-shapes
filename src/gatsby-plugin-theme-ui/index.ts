@@ -132,7 +132,7 @@ export default {
       },
       ':focus': {
         // boxShadow: '0px 0px 1px 3px rgba(0,0,255,0.90)',
-        // outline: 'none',
+        outline: 'none',
       },
     },
   },

@@ -23,11 +23,11 @@ export const Svg: FunctionComponent<ISvgProps> = memo(({ path, title, sx }) => {
       height="24px"
       sx={{
         ...sx,
+        filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
       }}
     >
       <title>{title}</title>
       <path d={path} fill="currentcolor" />
-      <path d="M0 0h24v24H0z" fill="none" />
     </svg>
   )
 })

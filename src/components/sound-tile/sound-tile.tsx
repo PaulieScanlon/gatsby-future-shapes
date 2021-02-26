@@ -6,8 +6,6 @@ import { ISvgItem } from '../../types'
 import { getRandomInt, getRandomRange } from '../../utils'
 import { Svg } from '../svg'
 
-const ROTATION_VALUES = [0, 45, 90, 135, 180, 225, 270, 315, 360]
-
 interface ISoundTileProps {
   /** index */
   index: number
@@ -39,9 +37,7 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(({ index, medi
   })
 
   const getTransforms = () =>
-    `scale(${getRandomRange(0.2, 4)}) rotate(${
-      ROTATION_VALUES[Math.round(getRandomRange(0, ROTATION_VALUES.length))]
-    }deg)`
+    `translate3d(0,0,0) scale(${getRandomRange(0.2, 1.8)}) rotate(${Math.floor(getRandomRange(0, 8)) * 45}deg)`
   const getRandomColor = (themeKey: string) => theme.colors[themeKey][getRandomInt(theme.colors[themeKey].length)]
   const getRandomSvg = () => svgItems[getRandomInt(svgItems.length)]
 
@@ -58,8 +54,6 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(({ index, medi
     setColor(getRandomColor('solids'))
     setBackgroundColor(getRandomColor('shades'))
     setTransform(getTransforms())
-
-    console.log()
   }
 
   useEffect(() => {
@@ -116,7 +110,6 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(({ index, medi
             color: color,
             transform: transform,
             transition: `${audioObject.duration / 3}s ease-out all`,
-            filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
             width: '100%',
             height: 'auto',
           }}
