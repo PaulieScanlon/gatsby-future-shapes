@@ -23,9 +23,14 @@ export const Svg: FunctionComponent<ISvgProps> = memo(({ path, title, sx }) => {
       height="24px"
       sx={{
         ...sx,
-        filter: 'drop-shadow(6px -4px 4px rgba(0, 0, 0, 0.2))',
+        filter: 'url(#shadow)',
       }}
     >
+      <defs>
+        <filter id="shadow" width="24px" height="24px">
+          <feDropShadow dx="-2" dy="-2" stdDeviation="2" floodColor="#000000" floodOpacity="0.2" />
+        </filter>
+      </defs>
       <title>{title}</title>
       <path d={path} fill="currentcolor" />
     </svg>
