@@ -3,6 +3,8 @@ import '@wordpress/block-library/build-style/editor.css'
 import '@wordpress/block-library/build-style/style.css'
 import '@wordpress/block-library/build-style/theme.css'
 import React, { Fragment, FunctionComponent } from 'react'
+import { Box } from 'theme-ui'
+import { Footer } from '../components/footer'
 import { Header } from '../components/header/header'
 import { useConfig } from '../hooks/useConfig'
 
@@ -32,7 +34,15 @@ const PageLayout: FunctionComponent = ({ children }) => {
         `}
       />
       <Header />
-      {children}
+      <Box
+        as="main"
+        sx={{
+          minHeight: '100vh',
+        }}
+      >
+        {children}
+      </Box>
+      <Footer />
     </Fragment>
   )
 }

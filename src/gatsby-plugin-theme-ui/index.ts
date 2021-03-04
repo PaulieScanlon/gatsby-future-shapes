@@ -113,7 +113,19 @@ export default {
         variant: 'links.nav',
       },
     },
+    footer: {
+      backgroundColor: 'text',
+      flexDirection: 'column',
+      p: 6,
+      a: {
+        color: 'lightGrey',
+      },
+      ul: {
+        p: 0,
+      },
+    },
     a: {
+      fontSize: 0,
       color: 'primary',
     },
   },

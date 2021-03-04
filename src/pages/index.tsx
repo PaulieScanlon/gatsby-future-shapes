@@ -136,12 +136,6 @@ const IndexPage: FunctionComponent = () => {
           </Box>
         </Container>
       </Flex>
-
-      <Flex as="footer" sx={{ alignItems: 'center' }}>
-        <Container>
-          <Text>Footer</Text>
-        </Container>
-      </Flex>
     </Grid>
   )
 }
