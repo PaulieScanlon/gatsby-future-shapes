@@ -2,23 +2,19 @@ import React, { Fragment, FunctionComponent, memo, useEffect, useRef, useState }
 import { IconButton } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 import { useSvgs } from '../../hooks/useSvgs'
-import { ISvgItem } from '../../types'
+import { ISoundItem, ISvgItem } from '../../types'
 import { getRandomInt, getRandomRange } from '../../utils'
 import { Svg } from '../svg'
 
-interface ISoundTileProps {
+interface ISoundTileProps extends ISoundItem {
   /** index */
   index: number
-  /** mediaItemUrl  */
-  mediaItemUrl: string
-  /** mimeType */
-  mimeType: string
   /** triggered from parent keypress  */
   forcePlay: boolean
 }
 
 export const SoundTile: FunctionComponent<ISoundTileProps> = memo(
-  ({ index, mediaItemUrl, mimeType, forcePlay = false }) => {
+  ({ index, node: { mediaItemUrl, mimeType }, forcePlay = false }) => {
     const svgItems: ISvgItem[] = useSvgs()
     const audioRef = useRef(null)
     const [isPlaying, setIsPlaying] = useState(false)
@@ -80,7 +76,6 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(
             setIsPlaying(false)
           }}
           onLoadedData={() => {
-            console.log('onLoadedData: ', index)
             setHasLoaded(true)
           }}
         >

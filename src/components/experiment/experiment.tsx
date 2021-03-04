@@ -34,21 +34,11 @@ export const Experiment: FunctionComponent = () => {
       <Grid
         sx={{
           gap: '0px',
-          gridTemplateColumns: ['1fr 1fr 1fr', '1fr 1fr 1fr 1fr 1fr 1fr '],
+          gridTemplateColumns: ['1fr 1fr 1fr', '1fr 1fr 1fr 1fr 1fr 1fr'],
         }}
       >
         {mpegItems.map((item: ISoundItem, index: number) => {
-          const { mediaItemUrl, mimeType } = item.node
-
-          return (
-            <SoundTile
-              key={index}
-              index={index}
-              mediaItemUrl={mediaItemUrl}
-              mimeType={mimeType}
-              forcePlay={randNum === index ? true : false}
-            />
-          )
+          return <SoundTile key={index} index={index} node={item.node} forcePlay={randNum === index ? true : false} />
         })}
       </Grid>
     </Grid>
