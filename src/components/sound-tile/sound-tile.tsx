@@ -80,6 +80,7 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(
             setIsPlaying(false)
           }}
           onCanPlayThrough={() => {
+            console.log('onCanPlayThrough: ', index)
             setHasLoaded(true)
           }}
         >
