@@ -141,6 +141,8 @@ export default {
       borderRadius: '0px',
       ':disabled': {
         color: 'transparent',
+        // opacity: 0.4,
+        cursor: 'not-allowed',
       },
       ':focus': {
         // boxShadow: '0px 0px 1px 3px rgba(0,0,255,0.90)',

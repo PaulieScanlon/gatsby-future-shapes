@@ -38,13 +38,14 @@ export const Experiment: FunctionComponent = () => {
         }}
       >
         {mpegItems.map((item: ISoundItem, index: number) => {
-          const { mediaItemUrl } = item.node
+          const { mediaItemUrl, mimeType } = item.node
 
           return (
             <SoundTile
               key={index}
               index={index}
               mediaItemUrl={mediaItemUrl}
+              mimeType={mimeType}
               forcePlay={randNum === index ? true : false}
             />
           )
