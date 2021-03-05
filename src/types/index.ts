@@ -9,6 +9,16 @@ export interface ITagItem {
 export interface IPage {
   data: {
     page: {
+      next?: {
+        title: string
+        slug: string
+        uri: string
+      }
+      previous?: {
+        title: string
+        slug: string
+        uri: string
+      }
       id?: string
       featuredImage?: {
         node: {

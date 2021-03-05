@@ -1,3 +1,5 @@
+import { transparentize } from '@theme-ui/color'
+
 export default {
   colors: {
     text: '#000000',
@@ -34,6 +36,7 @@ export default {
     h5: '2.5rem',
     h6: '2.3rem',
     body: '1.2rem',
+    button: '.4rem',
   },
   sizes: {
     headerH: '64px',
@@ -141,6 +144,27 @@ export default {
     },
   },
   buttons: {
+    default: {
+      alignItems: 'center',
+      borderStyle: 'solid',
+      borderWidth: '2px',
+      display: 'flex',
+      fontSize: 0,
+      py: 4,
+      px: 6,
+      lineHeight: 'button',
+      textDecoration: 'none',
+      textTransform: 'uppercase',
+      transition: '.2s linear background-color',
+    },
+    primary: {
+      borderColor: 'primary',
+      backgroundColor: 'background',
+      variant: 'buttons.default',
+      ':hover': {
+        backgroundColor: transparentize('primaryLight', 0.75),
+      },
+    },
     icon: {
       backgroundColor: 'transparent',
       color: 'primary',

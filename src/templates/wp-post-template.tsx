@@ -1,8 +1,8 @@
-import { graphql } from 'gatsby'
+import { graphql, Link as GatsbyLink } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import React, { Fragment, FunctionComponent } from 'react'
-import { Box, Container, Heading } from 'theme-ui'
+import { Box, Container, Flex, Heading } from 'theme-ui'
 import { Modifier } from '../components/modifier'
 import { Seo } from '../components/seo'
 import { IPage } from '../types'
@@ -10,7 +10,7 @@ import { IPage } from '../types'
 interface IPostTemplate extends IPage {}
 
 const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) => {
-  const { title, content, tags, featuredImage, svgAttributes } = page
+  const { title, content, tags, featuredImage, svgAttributes, next, previous } = page
 
   const {
     node: { altText, localFile },
@@ -37,7 +37,16 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
           </Heading>
 
           <Modifier svgAttributes={svgAttributes} tags={tags} />
-          {content ? <Box>{parse(content)}</Box> : null}
+          {content ? <Box sx={{ mb: 7 }}>{parse(content)}</Box> : null}
+
+          <Flex
+            sx={{
+              justifyContent: 'space-between',
+            }}
+          >
+            {next ? <GatsbyLink to={next.uri}>{next.title}</GatsbyLink> : null}
+            {previous ? <GatsbyLink to={previous.uri}>{previous.title}</GatsbyLink> : null}
+          </Flex>
         </Container>
       </Box>
     </Fragment>
@@ -47,29 +56,22 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
 // {
 //   wpPost(id: {eq: "cG9zdDoxMjI="}) {
 //     id
-//     featuredImage {
-//       node {
-//         altText
-//         localFile {
-//           childImageSharp {
-//             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-//           }
-//         }
-//       }
-//     }
-//     title
-//     content
-//     tags {
-//       nodes {
-//         name
-//       }
-//     }
 //   }
 // }
 
 export const query = graphql`
   query SinglePost($id: String!) {
     page: wpPost(id: { eq: $id }) {
+      next {
+        title
+        uri
+        slug
+      }
+      previous {
+        title
+        uri
+        slug
+      }
       featuredImage {
         node {
           altText

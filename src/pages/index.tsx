@@ -1,3 +1,4 @@
+import { Link as GatsbyLink } from 'gatsby'
 import { YouTube } from 'mdx-embed'
 import React, { Fragment, FunctionComponent } from 'react'
 import { Box, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
@@ -73,12 +74,22 @@ const IndexPage: FunctionComponent = () => {
               sx={{
                 gap: 6,
                 gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
+                mb: 7,
               }}
             >
               {postItems.slice(0, 3).map((item: IPostItem, index: number) => {
                 return <PostTile key={index} {...item} />
               })}
             </Grid>
+
+            <Flex
+              sx={{
+                justifyContent: 'center',
+                a: { variant: 'buttons.primary' },
+              }}
+            >
+              <GatsbyLink to="/posts">More Posts</GatsbyLink>
+            </Flex>
           </Container>
         </Box>
 
