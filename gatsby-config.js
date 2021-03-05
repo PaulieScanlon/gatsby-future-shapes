@@ -4,12 +4,13 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    name: `gatsby-future-shapes`,
+    name: `Future Shapes`,
     description: `A gatsby-source-wordpress demo`,
     keywords: [`gatsby`, `gatsbyjs`, `gatsby-source-wordpress`],
     siteUrl: `https://gatsbyfutureshapes.gatsbyjs.io/`,
     siteImage: `https://gatsbyfutureshapes.gatsbyjs.io/images/future-shapes-og-image.jpg`,
     lang: `en-gb`,
+    type: `website`,
   },
   plugins: [
     {
@@ -27,5 +28,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
   ],
 }
