@@ -152,7 +152,7 @@ export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tag
           </Grid>
           <Box
             sx={{
-              boxShadow: 0,
+              boxShadow: 'default',
               overflow: 'hidden',
             }}
           >

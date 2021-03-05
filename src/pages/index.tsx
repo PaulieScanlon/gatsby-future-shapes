@@ -2,6 +2,7 @@ import { YouTube } from 'mdx-embed'
 import React, { FunctionComponent } from 'react'
 import { Box, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
 import { Experiment } from '../components/experiment/experiment'
+import { GeneralObserver } from '../components/general-observer'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
 import { usePosts } from '../hooks/usePosts'
@@ -126,13 +127,15 @@ const IndexPage: FunctionComponent = () => {
           <Heading as="h2" variant="styles.h5">
             The Experiment
           </Heading>
-          <Text>Press a key or click/tap a button</Text>
+          <Text>Press any key on your keyboard or click a tile below</Text>
           <Box
             sx={{
               py: 6,
             }}
           >
-            <Experiment />
+            <GeneralObserver>
+              <Experiment />
+            </GeneralObserver>
           </Box>
         </Container>
       </Flex>
