@@ -9,7 +9,7 @@ export interface ITagItem {
 export interface IPage {
   data: {
     page: {
-      id: string
+      id?: string
       featuredImage?: {
         node: {
           altText: string
