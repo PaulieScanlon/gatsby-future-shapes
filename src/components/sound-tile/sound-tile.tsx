@@ -65,17 +65,6 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(({ index, medi
   useEffect(() => {
     let audio = new Audio(mediaItemUrl)
 
-    // @TODO not sure if canplaythrough or canplay fire on iOS
-    // audio.addEventListener('canplay', () => {
-    //   // audio.volume = 1
-    //   setAudioObject({
-    //     path: mediaItemUrl,
-    //     audio: audio,
-    //     isLoaded: true,
-    //     duration: audio.duration,
-    //   })
-    // })
-
     setAudioObject({
       path: mediaItemUrl,
       audio: audio,
@@ -96,8 +85,12 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(({ index, medi
     <Fragment>
       <IconButton
         key={index}
-        disabled={!audioObject.isLoaded || isPlaying}
-        onClick={playSound}
+        disabled={!audioObject.isLoaded}
+        onClick={() => {
+          if (!isPlaying) {
+            playSound()
+          }
+        }}
         data-index={index}
         sx={{
           color: color,

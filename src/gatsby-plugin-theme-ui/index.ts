@@ -10,6 +10,7 @@ export default {
     darkGrey: '#535353',
     solids: ['#c681ba', '#4cc1bb', '#5556a8', '#f25e5e', '#fecc09', '#64b5f6'],
     shades: ['#d7a7cf', '#82d4d0', '#8889c2', '#f68f8f', '#fedb53', '#c1e1fb'],
+    focus: 'rgba(0,0,255,0.90)',
   },
   fonts: {
     heading: 'Helvetica, Arial',
@@ -43,7 +44,11 @@ export default {
 
   space: [1, 2, 4, 8, 16, 24, 32, 64, 128, 256],
 
-  shadows: ['rgb(0 0 0 / 15%) 0px 14px 48px -4px'],
+  shadows: {
+    default: 'rgb(0 0 0 / 15%) 0px 14px 48px -4px',
+    heavy: '0px 0px 40px -5px rgba(0,0,0,0.25)',
+    focus: '0px 0px 1px 3px rgba(0,0,255,0.90)',
+  },
 
   styles: {
     root: {
@@ -52,7 +57,7 @@ export default {
       lineHeight: 'body',
       fontSize: 1,
       '.mdx-embed': {
-        boxShadow: 0,
+        boxShadow: 'default',
       },
     },
 
@@ -127,6 +132,10 @@ export default {
     a: {
       fontSize: 0,
       color: 'primary',
+      ':focus': {
+        outline: 'none',
+        boxShadow: 'focus',
+      },
     },
   },
   buttons: {
@@ -139,24 +148,47 @@ export default {
       height: 'auto',
       overflow: 'hidden',
       borderRadius: '0px',
+      transition: '.2s linear box-shadow, .2s ease-in-out transform ',
+      ':focus:enabled': {
+        zIndex: 1,
+        outline: 'none',
+        boxShadow: 'focus',
+      },
+      ':hover:enabled': {
+        zIndex: 1,
+        boxShadow: 'heavy',
+        transform: 'scale3d(1.1, 1.1, 1.1)',
+      },
       ':disabled': {
         color: 'transparent',
-      },
-      ':focus': {
-        // boxShadow: '0px 0px 1px 3px rgba(0,0,255,0.90)',
-        outline: 'none',
+        opacity: 0.5,
       },
     },
   },
   cards: {
     primary: {
       position: 'relative',
-      boxShadow: 0,
+      boxShadow: 'default',
       a: {
-        variant: 'styles.a',
         color: 'text',
+        display: 'block',
         fontWeight: 'heading',
         textDecoration: 'none',
+        overflow: 'hidden',
+        transition: '.2s linear color',
+        ':focus': {
+          outline: 'none',
+          boxShadow: 'focus',
+        },
+        ':hover': {
+          color: 'primary',
+        },
+        ['.gatsby-image-wrapper']: {
+          transition: '.2s ease-in-out transform',
+          ':hover': {
+            transform: 'scale3d(1.1, 1.1, 1.1)',
+          },
+        },
       },
     },
   },
@@ -173,6 +205,10 @@ export default {
       transition: '.2s linear background-color',
       ':hover': {
         backgroundColor: 'lightGrey',
+      },
+      ':focus': {
+        outline: 'none',
+        boxShadow: 'focus',
       },
       '&[aria-current="page"]': {
         color: 'primary',
