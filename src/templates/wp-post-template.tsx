@@ -16,7 +16,11 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
   } = featuredImage || { node: { altText: '', localFile: null } }
 
   return (
-    <Box>
+    <Box
+      sx={{
+        mb: 7,
+      }}
+    >
       <Box
         sx={{
           mb: 7,

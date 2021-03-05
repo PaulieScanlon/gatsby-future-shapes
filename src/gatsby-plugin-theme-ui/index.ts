@@ -59,6 +59,9 @@ export default {
       '.mdx-embed': {
         boxShadow: 'default',
       },
+      a: {
+        variant: 'styles.a',
+      },
     },
 
     h1: {
@@ -130,7 +133,6 @@ export default {
       },
     },
     a: {
-      fontSize: 0,
       color: 'primary',
       ':focus': {
         outline: 'none',
