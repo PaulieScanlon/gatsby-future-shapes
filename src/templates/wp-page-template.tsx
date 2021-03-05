@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
-import React, { FunctionComponent } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import { Box, Container, Heading } from 'theme-ui'
+import { Seo } from '../components/seo'
 import { IPage } from '../types'
 
 interface IPageTemplate extends IPage {}
@@ -9,14 +10,17 @@ interface IPageTemplate extends IPage {}
 const WpPageTemplate: FunctionComponent<IPageTemplate> = ({ data: { page } }) => {
   const { title, content } = page
   return (
-    <Box>
-      <Container>
-        <Heading as="h1" variant="styles.h5">
-          {title}
-        </Heading>
-        <Box>{parse(content)}</Box>
-      </Container>
-    </Box>
+    <Fragment>
+      <Seo title={title} />
+      <Box>
+        <Container>
+          <Heading as="h1" variant="styles.h5">
+            {title}
+          </Heading>
+          <Box>{parse(content)}</Box>
+        </Container>
+      </Box>
+    </Fragment>
   )
 }
 
