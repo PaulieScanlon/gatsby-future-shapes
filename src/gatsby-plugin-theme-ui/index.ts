@@ -164,6 +164,14 @@ export default {
       borderColor: 'primary',
       backgroundColor: 'background',
       variant: 'buttons.default',
+      ':focus:not(:focus-visible)': {
+        outline: 'none',
+        boxShadow: 'none',
+      },
+      ':focus-visible': {
+        outline: 'none',
+        boxShadow: 'focus',
+      },
       ':hover': {
         backgroundColor: transparentize('primaryLight', 0.75),
       },
@@ -178,6 +186,14 @@ export default {
       overflow: 'hidden',
       borderRadius: '0px',
       transition: '.2s linear box-shadow, .2s ease-in-out transform ',
+      ':focus:not(:focus-visible)': {
+        outline: 'none',
+        boxShadow: 'none',
+      },
+      ':focus-visible': {
+        outline: 'none',
+        boxShadow: 'focus',
+      },
       ':focus:enabled': {
         zIndex: 1,
         outline: 'none',
@@ -205,7 +221,11 @@ export default {
         textDecoration: 'none',
         overflow: 'hidden',
         transition: '.2s linear color',
-        ':focus': {
+        ':focus:not(:focus-visible)': {
+          outline: 'none',
+          boxShadow: 'none',
+        },
+        ':focus-visible': {
           outline: 'none',
           boxShadow: 'focus',
         },
@@ -235,7 +255,11 @@ export default {
       ':hover': {
         backgroundColor: 'lightGrey',
       },
-      ':focus': {
+      ':focus:not(:focus-visible)': {
+        outline: 'none',
+        boxShadow: 'none',
+      },
+      ':focus-visible': {
         outline: 'none',
         boxShadow: 'focus',
       },
@@ -256,7 +280,12 @@ export default {
     slider: {
       color: 'primary',
       backgroundColor: 'primaryLight',
-      ':focus': {
+      ':focus:not(:focus-visible)': {
+        outline: 'none',
+        boxShadow: 'none',
+      },
+      ':focus-visible': {
+        outline: 'none',
         boxShadow: 'focus',
       },
       ':disabled': {
