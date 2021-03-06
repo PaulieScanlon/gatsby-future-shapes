@@ -14,7 +14,7 @@ const PostsPage: FunctionComponent = () => {
 
   return (
     <Fragment>
-      <Seo title="Posts" />
+      <Seo title="Posts" canonical="/posts/" />
       <Box
         sx={{
           mb: 7,

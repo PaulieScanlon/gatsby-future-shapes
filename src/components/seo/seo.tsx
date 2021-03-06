@@ -5,16 +5,18 @@ import { useMeta } from '../../hooks/useMeta'
 interface ISeoProps {
   /** The title of the page */
   title?: string
+  /** The canonical url */
+  canonical?: string
 }
 
-export const Seo: FunctionComponent<ISeoProps> = ({ title }) => {
+export const Seo: FunctionComponent<ISeoProps> = ({ title, canonical = '' }) => {
   const { lang, name, description, siteUrl, siteImage, keywords, type } = useMeta().site.siteMetadata
 
   return (
     <Helmet>
       <html lang={lang} />
       <title>{title ? `${name} | ${title}` : `${name}`}</title>
-      <link rel="canonical" href={siteUrl} />
+      <link rel="canonical" href={`${siteUrl}${canonical}`} />
       <meta name="description" content={description} />
       <meta name="image" content={`${siteUrl}/${siteImage}`} />
       <meta name="image:alt" content={description} />

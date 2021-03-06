@@ -13,7 +13,7 @@ interface IPostTemplate extends IPage {}
 const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) => {
   const promoItems = usePromos()
 
-  const { title, content, tags, featuredImage, svgAttributes, next, previous } = page
+  const { title, content, link, tags, featuredImage, svgAttributes, next, previous } = page
 
   const {
     node: { altText, localFile },
@@ -21,7 +21,7 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
 
   return (
     <Fragment>
-      <Seo title={title} />
+      <Seo title={title} canonical={link} />
       <Box
         sx={{
           mb: 7,
@@ -96,6 +96,7 @@ export const query = graphql`
       }
       title
       content
+      link
       tags {
         nodes {
           name

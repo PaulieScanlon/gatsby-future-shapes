@@ -11,11 +11,11 @@ interface IPageTemplate extends IPage {}
 const WpPageTemplate: FunctionComponent<IPageTemplate> = ({ data: { page } }) => {
   const promoItems = usePromos()
 
-  const { title, content } = page
+  const { title, content, link } = page
 
   return (
     <Fragment>
-      <Seo title={title} />
+      <Seo title={title} canonical={link} />
 
       <Container>
         <Heading as="h1" variant="styles.h5">
@@ -46,6 +46,7 @@ export const query = graphql`
     page: wpPage(id: { eq: $id }) {
       title
       content
+      link
     }
   }
 `
