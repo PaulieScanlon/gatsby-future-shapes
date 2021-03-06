@@ -256,6 +256,9 @@ export default {
     slider: {
       color: 'primary',
       backgroundColor: 'primaryLight',
+      ':focus': {
+        boxShadow: 'focus',
+      },
       ':disabled': {
         cursor: 'not-allowed',
         color: 'midGrey',
