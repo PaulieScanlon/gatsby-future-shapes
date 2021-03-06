@@ -5,7 +5,7 @@ import '@wordpress/block-library/build-style/theme.css'
 import React, { Fragment, FunctionComponent } from 'react'
 import { Box } from 'theme-ui'
 import { Footer } from '../components/footer'
-import { Header } from '../components/header/header'
+import { Header } from '../components/header'
 import { useConfig } from '../hooks/useConfig'
 
 const PageLayout: FunctionComponent = ({ children }) => {
