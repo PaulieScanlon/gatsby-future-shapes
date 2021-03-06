@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
+import { IPromoItem } from '../types'
 
-export const usePromos = () => {
+export const usePromos = (): IPromoItem[] => {
   const {
     allWpYouTubePromo: { edges },
   } = useStaticQuery(graphql`

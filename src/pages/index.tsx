@@ -5,6 +5,7 @@ import { Experiment } from '../components/experiment/experiment'
 import { GeneralObserver } from '../components/general-observer'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
+import { RandomShapes } from '../components/random-shapes/random-shapes'
 import { Seo } from '../components/seo'
 import { YouTubePromo } from '../components/youtube-promo/youtube-promo'
 import { usePosts } from '../hooks/usePosts'
@@ -21,20 +22,25 @@ const IndexPage: FunctionComponent = () => {
       <Grid
         sx={{
           gap: 7,
+          pb: 7,
         }}
       >
         <Flex
           as="section"
           sx={{
+            position: 'relative',
             alignItems: 'center',
             backgroundColor: 'lightGrey',
             minHeight: '100%',
-            height: ['30vh', '50vh'],
+            height: '50vh',
+            px: [4, 0],
           }}
         >
+          <RandomShapes />
           <Container
             sx={{
               textAlign: 'center',
+              zIndex: 1,
             }}
           >
             <Logo />
@@ -69,12 +75,13 @@ const IndexPage: FunctionComponent = () => {
             <Heading as="h2" variant="styles.h5">
               Latest Posts
             </Heading>
-
+            <Text variant="subheading">Here&apos;s the latest posts</Text>
             <Grid
               sx={{
                 gap: 6,
                 gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
                 mb: 7,
+                px: [4, 0],
               }}
             >
               {postItems.slice(0, 3).map((item: IPostItem, index: number) => {
@@ -93,35 +100,20 @@ const IndexPage: FunctionComponent = () => {
           </Container>
         </Box>
 
-        <Flex
-          as="section"
-          sx={{
-            alignItems: 'center',
-            backgroundColor: 'lightGrey',
-            py: 7,
-          }}
-        >
-          <YouTubePromo
-            isFeatured={true}
-            node={promoItems.filter((item: IPromoItem) => item.node.youTubeAttributes.featured)[0].node}
-          />
-        </Flex>
+        <YouTubePromo
+          isFeatured={true}
+          node={promoItems.filter((item: IPromoItem) => item.node.youTubeAttributes.featured)[0].node}
+        />
 
         <Flex as="section" sx={{ alignItems: 'center' }}>
           <Container>
             <Heading as="h2" variant="styles.h5">
               The Experiment
             </Heading>
-            <Text>Press any key on your keyboard or click a tile below</Text>
-            <Box
-              sx={{
-                py: 6,
-              }}
-            >
-              <GeneralObserver>
-                <Experiment />
-              </GeneralObserver>
-            </Box>
+            <Text variant="subheading">Press any key on your keyboard or click a tile below</Text>
+            <GeneralObserver>
+              <Experiment />
+            </GeneralObserver>
           </Container>
         </Flex>
       </Grid>

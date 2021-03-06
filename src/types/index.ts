@@ -3,9 +3,6 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 // currently used for wp-page-template and wp-post-template
 
-export interface ITagItem {
-  name: string
-}
 export interface IPage {
   data: {
     page: {
@@ -58,6 +55,10 @@ export interface IPostItem {
       }
     }
   }
+}
+
+export interface ITagItem {
+  name: string
 }
 
 export interface IPromoItem {

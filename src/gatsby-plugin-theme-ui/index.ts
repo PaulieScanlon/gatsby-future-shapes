@@ -12,7 +12,6 @@ export default {
     darkGrey: '#535353',
     solids: ['#c681ba', '#4cc1bb', '#5556a8', '#f25e5e', '#fecc09', '#64b5f6'],
     shades: ['#d7a7cf', '#82d4d0', '#8889c2', '#f68f8f', '#fedb53', '#c1e1fb'],
-    focus: 'rgba(0,0,255,0.90)',
   },
   fonts: {
     heading: 'Helvetica, Arial',
@@ -133,6 +132,10 @@ export default {
       },
       ul: {
         p: 0,
+        fontSize: 0,
+        li: {
+          mb: [2, 3],
+        },
       },
     },
     a: {
@@ -281,6 +284,9 @@ export default {
       position: 'relative',
       textTransform: 'uppercase',
       mb: 6,
+    },
+    subheading: {
+      mb: 7,
     },
   },
   layout: {

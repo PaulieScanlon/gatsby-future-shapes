@@ -25,7 +25,7 @@ export const Svg: FunctionComponent<ISvgProps> = memo(({ path, title, hasShadow 
       height="24px"
       sx={{
         ...sx,
-        filter: 'url(#shadow)',
+        filter: hasShadow ? 'url(#shadow)' : 'none',
       }}
     >
       {hasShadow ? (

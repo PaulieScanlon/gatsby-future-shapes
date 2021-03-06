@@ -18,7 +18,7 @@ export const Footer: FunctionComponent = () => {
         <Text
           sx={{
             color: 'background',
-            mb: 2,
+            mb: 4,
           }}
         >
           <span role="img" aria-label="Sparkles">

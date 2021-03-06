@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import React, { Fragment, FunctionComponent } from 'react'
-import { Box, Container, Flex, Heading } from 'theme-ui'
+import { Box, Container, Heading } from 'theme-ui'
 import { Seo } from '../components/seo'
 import { YouTubePromo } from '../components/youtube-promo/youtube-promo'
 import { usePromos } from '../hooks/usePromos'
@@ -28,23 +28,15 @@ const WpPageTemplate: FunctionComponent<IPageTemplate> = ({ data: { page } }) =>
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </Container>
-      <Flex
-        as="section"
-        sx={{
-          alignItems: 'center',
-          backgroundColor: 'lightGrey',
-          py: 7,
-        }}
-      >
-        <YouTubePromo
-          node={
-            promoItems
-              .filter((item: IPromoItem) => !item.node.youTubeAttributes.featured)
-              .sort(() => 0.5 - Math.random())
-              .slice(0, 1)[0].node
-          }
-        />
-      </Flex>
+
+      <YouTubePromo
+        node={
+          promoItems
+            .filter((item: IPromoItem) => !item.node.youTubeAttributes.featured)
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 1)[0].node
+        }
+      />
     </Fragment>
   )
 }

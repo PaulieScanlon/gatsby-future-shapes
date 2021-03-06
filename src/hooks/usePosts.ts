@@ -13,7 +13,7 @@ export const usePosts = () => {
                 altText
                 localFile {
                   childImageSharp {
-                    gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                    gatsbyImageData(quality: 80, layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                   }
                 }
               }

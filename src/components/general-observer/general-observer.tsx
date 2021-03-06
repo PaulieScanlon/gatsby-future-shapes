@@ -13,7 +13,7 @@ export const GeneralObserver: FunctionComponent = ({ children }) => {
       },
       {
         root: null,
-        rootMargin: '300px',
+        rootMargin: '250px',
         threshold: 0,
       },
     )

@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent } from 'react'
-import { Box, Container, Flex, Grid, Heading } from 'theme-ui'
+import { Box, Container, Grid, Heading, Text } from 'theme-ui'
 import { PostTile } from '../components/post-tile'
 import { Seo } from '../components/seo'
 import { YouTubePromo } from '../components/youtube-promo/youtube-promo'
@@ -24,6 +24,7 @@ const PostsPage: FunctionComponent = () => {
           <Heading as="h1" variant="styles.h5">
             Posts
           </Heading>
+          <Text variant="subheading">Here&apos;s all the posts</Text>
           <Grid
             sx={{
               gap: 6,
@@ -36,23 +37,15 @@ const PostsPage: FunctionComponent = () => {
           </Grid>
         </Container>
       </Box>
-      <Flex
-        as="section"
-        sx={{
-          alignItems: 'center',
-          backgroundColor: 'lightGrey',
-          py: 7,
-        }}
-      >
-        <YouTubePromo
-          node={
-            promoItems
-              .filter((item: IPromoItem) => !item.node.youTubeAttributes.featured)
-              .sort(() => 0.5 - Math.random())
-              .slice(0, 1)[0].node
-          }
-        />
-      </Flex>
+
+      <YouTubePromo
+        node={
+          promoItems
+            .filter((item: IPromoItem) => !item.node.youTubeAttributes.featured)
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 1)[0].node
+        }
+      />
     </Fragment>
   )
 }
