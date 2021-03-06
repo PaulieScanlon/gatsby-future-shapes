@@ -62,7 +62,7 @@ const IndexPage: FunctionComponent = () => {
               >
                 gatsby-source-wordpress
               </Link>{' '}
-              demo by
+              demo by{' '}
               <Link href="https://twitter.com/PaulieScanlon" target="_blank" rel="noopener">
                 @PaulieScanlon
               </Link>
