@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react'
 import { Box, Grid, Label, Slider } from 'theme-ui'
 import { useTags } from '../../hooks/useTags'
-import { ITagItem } from '../../types'
+import { ITagNode, ITagNodes } from '../../types'
 import { Svg } from '../svg'
 
 const ROTATE = 'rotate'
@@ -15,9 +15,7 @@ interface IModifierProps {
     path: string
   }
   /** tags from the page */
-  tags: {
-    nodes: ITagItem[]
-  }
+  tags: ITagNodes
 }
 
 interface ICssTransforms {
@@ -50,7 +48,7 @@ const sliderConfig = (name: string) => {
 }
 
 const cssConfig = (cssTransforms: ITransformValues) => {
-  return Object.entries(cssTransforms.values)
+  return Object.entries(cssTransforms)
     .map((item) => item[1])
     .reduce((items, item) => {
       const { name, value } = item as ITransformShape
@@ -65,10 +63,10 @@ const cssConfig = (cssTransforms: ITransformValues) => {
 export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tags }) => {
   const [cssTransforms, setCssTransform] = useState<ICssTransforms>({ type: '', css: null, values: null })
 
-  const tagItems = useTags()
+  const tagItems: ITagNode[] = useTags()
 
   useEffect(() => {
-    const initialTransforms = tagItems.reduce((items, item) => {
+    const initialTransforms = tagItems.reduce((items, item: ITagNode): ITransformValues => {
       const { name } = item.node
       items[item.node.name] = {
         name: name,
@@ -79,7 +77,7 @@ export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tag
 
     setCssTransform({
       type: svgAttributes.title,
-      css: cssConfig({ values: initialTransforms }),
+      css: cssConfig(initialTransforms),
       values: {
         ...initialTransforms,
       },
@@ -93,7 +91,7 @@ export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tag
 
     setCssTransform({
       ...cssTransforms,
-      css: cssConfig({ values: cssTransforms.values }),
+      css: cssConfig(cssTransforms.values),
       values: {
         ...cssTransforms.values,
         [name]: {
@@ -119,9 +117,8 @@ export const Modifier: FunctionComponent<IModifierProps> = ({ svgAttributes, tag
               rowGap: 4,
             }}
           >
-            {tagItems.map((item, index: number) => {
+            {tagItems.map((item: ITagNode, index: number) => {
               const { name } = item.node
-
               const isDisabled = tags.nodes.every((val) => val.name !== name)
 
               return (

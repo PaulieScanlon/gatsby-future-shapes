@@ -140,6 +140,8 @@ export default {
     },
     a: {
       color: 'primary',
+      wordBreak: 'break-word',
+
       ':focus': {
         outline: 'none',
         boxShadow: 'focus',

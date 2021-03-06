@@ -26,9 +26,7 @@ export interface IPage {
       title: string
       content: string
       link: string
-      tags: {
-        nodes: ITagItem[]
-      }
+      tags: ITagNodes
       svgAttributes: {
         path: string
         title: string
@@ -52,6 +50,13 @@ export interface IPostItem {
 
 export interface ITagItem {
   name: string
+}
+export interface ITagNodes {
+  nodes: ITagItem[]
+}
+
+export interface ITagNode {
+  node: ITagItem
 }
 
 export interface IPromoItem {

@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { ITagItem } from '../types'
+import { ITagNode } from '../types'
 
-export const useTags = (): ITagItem[] => {
+export const useTags = (): ITagNode[] => {
   const {
     allWpTag: { edges },
   } = useStaticQuery(graphql`
