@@ -9,6 +9,7 @@ export const usePromos = () => {
         edges {
           node {
             youTubeAttributes {
+              featured
               title
               description
               link
