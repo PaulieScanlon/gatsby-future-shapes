@@ -1,5 +1,4 @@
 import { graphql } from 'gatsby'
-import parse from 'html-react-parser'
 import React, { Fragment, FunctionComponent } from 'react'
 import { Box, Container, Flex, Heading } from 'theme-ui'
 import { Seo } from '../components/seo'
@@ -26,9 +25,8 @@ const WpPageTemplate: FunctionComponent<IPageTemplate> = ({ data: { page } }) =>
           sx={{
             mb: 7,
           }}
-        >
-          {parse(content)}
-        </Box>
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </Container>
       <Flex
         as="section"

@@ -1,6 +1,5 @@
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import parse from 'html-react-parser'
 import React, { Fragment, FunctionComponent } from 'react'
 import { Box, Container, Flex, Heading } from 'theme-ui'
 import { Modifier } from '../components/modifier'
@@ -41,7 +40,7 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
           </Heading>
 
           <Modifier svgAttributes={svgAttributes} tags={tags} />
-          {content ? <Box sx={{ mb: 7 }}>{parse(content)}</Box> : null}
+          {content ? <Box sx={{ mb: 7 }} dangerouslySetInnerHTML={{ __html: content }} /> : null}
 
           <Flex
             sx={{

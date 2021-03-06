@@ -51,7 +51,6 @@
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-source-wordpress": "^5.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
-    "html-react-parser": "^1.2.4",
     "mdx-embed": "^0.0.19",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

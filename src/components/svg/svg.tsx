@@ -7,11 +7,13 @@ interface ISvgProps {
   path: string
   /** The icon title */
   title?: string
+  /** Determines if the shadow filter is applied */
+  hasShadow?: boolean
   /** Theme UI - sx */
   sx?: SxStyleProp
 }
 
-export const Svg: FunctionComponent<ISvgProps> = memo(({ path, title, sx }) => {
+export const Svg: FunctionComponent<ISvgProps> = memo(({ path, title, hasShadow = false, sx }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -26,11 +28,13 @@ export const Svg: FunctionComponent<ISvgProps> = memo(({ path, title, sx }) => {
         filter: 'url(#shadow)',
       }}
     >
-      <defs>
-        <filter id="shadow" width="24px" height="24px">
-          <feDropShadow dx="-2" dy="-2" stdDeviation="2" floodColor="#000000" floodOpacity="0.2" />
-        </filter>
-      </defs>
+      {hasShadow ? (
+        <defs>
+          <filter id="shadow" width="24px" height="24px">
+            <feDropShadow dx="-2" dy="-2" stdDeviation="2" floodColor="#000000" floodOpacity="0.2" />
+          </filter>
+        </defs>
+      ) : null}
       <title>{title}</title>
       <path d={path} fill="currentcolor" />
     </svg>

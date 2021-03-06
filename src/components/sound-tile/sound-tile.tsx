@@ -79,6 +79,8 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(({ index, medi
     audio.addEventListener('error', () => {
       audio = new Audio(mediaItemUrl)
     })
+
+    audio.volume = 0.4
   }, [])
 
   return (
@@ -99,6 +101,7 @@ export const SoundTile: FunctionComponent<ISoundTileProps> = memo(({ index, medi
       >
         <Svg
           {...svgObject.node.svgAttributes}
+          hasShadow={true}
           sx={{
             color: color,
             transform: transform,
