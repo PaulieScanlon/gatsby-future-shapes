@@ -215,6 +215,7 @@ export default {
       position: 'relative',
       boxShadow: 'default',
       a: {
+        backgroundColor: 'lightGrey',
         color: 'text',
         display: 'block',
         fontWeight: 'heading',
@@ -233,6 +234,8 @@ export default {
           color: 'primary',
         },
         ['.gatsby-image-wrapper']: {
+          mx: 'auto',
+          width: ['50%', '30%', '100%'],
           transition: '.2s ease-in-out transform',
           ':hover': {
             transform: 'scale3d(1.1, 1.1, 1.1)',

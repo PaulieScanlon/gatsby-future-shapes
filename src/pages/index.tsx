@@ -32,7 +32,7 @@ const IndexPage: FunctionComponent = () => {
             alignItems: 'center',
             backgroundColor: 'lightGrey',
             minHeight: '100%',
-            height: '50vh',
+            height: '40vh',
             px: [4, 0],
           }}
         >
@@ -79,7 +79,7 @@ const IndexPage: FunctionComponent = () => {
             <Grid
               sx={{
                 gap: 6,
-                gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
+                gridTemplateColumns: ['1fr', '1fr', '1fr 1fr 1fr'],
                 mb: 7,
               }}
             >
