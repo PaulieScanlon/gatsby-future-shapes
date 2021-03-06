@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://gatsbyfutureshapes.gatsbyjs.io">
-    <img alt="Bum Hub" src="https://gatsbyfutureshapes.gatsbyjs.io/images/future-shapes-og-image.jpg" />
+  <a href="https://gatsbyfutureshapes.gatsbyjs.io" targe="_blank" rel='noopener'>
+    <img alt="Future Shapes" src="https://gatsbyfutureshapes.gatsbyjs.io/images/future-shapes-og-image.jpg" />
   </a>
 </p>
 
