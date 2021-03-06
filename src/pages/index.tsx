@@ -81,7 +81,6 @@ const IndexPage: FunctionComponent = () => {
                 gap: 6,
                 gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
                 mb: 7,
-                px: [4, 0],
               }}
             >
               {postItems.slice(0, 3).map((item: IPostItem, index: number) => {
