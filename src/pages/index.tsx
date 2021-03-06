@@ -1,5 +1,4 @@
 import { Link as GatsbyLink } from 'gatsby'
-import { YouTube } from 'mdx-embed'
 import React, { Fragment, FunctionComponent } from 'react'
 import { Box, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
 import { Experiment } from '../components/experiment/experiment'
@@ -7,6 +6,7 @@ import { GeneralObserver } from '../components/general-observer'
 import { Logo } from '../components/logo/logo'
 import { PostTile } from '../components/post-tile/post-tile'
 import { Seo } from '../components/seo'
+import { YouTubePromo } from '../components/youtube-promo/youtube-promo'
 import { usePosts } from '../hooks/usePosts'
 import { usePromos } from '../hooks/usePromos'
 import { IPostItem, IPromoItem } from '../types'
@@ -101,39 +101,10 @@ const IndexPage: FunctionComponent = () => {
             py: 7,
           }}
         >
-          <Container>
-            <Heading as="h2" variant="styles.h5">
-              Promo
-            </Heading>
-            <Box>
-              {promoItems.slice(0, 1).map((item: IPromoItem, index: number) => {
-                const { title, description, link, id } = item.node.youTubeAttributes
-
-                return (
-                  <Grid
-                    key={index}
-                    sx={{
-                      gap: 4,
-                      gridTemplateColumns: ['1fr', '1fr 1fr', '2fr 1fr'],
-                    }}
-                  >
-                    <Box>
-                      <Heading as="h3" variant="styles.h6">
-                        {title}
-                      </Heading>
-                      <Text sx={{ mb: 3 }}>{description}</Text>
-                      <Link href={link} target="_blank" rel="noopener" sx={{ fontSize: 0, textTransform: 'uppercase' }}>
-                        more info
-                      </Link>
-                    </Box>
-                    <Box>
-                      <YouTube youTubeId={id} />
-                    </Box>
-                  </Grid>
-                )
-              })}
-            </Box>
-          </Container>
+          <YouTubePromo
+            isFeatured={true}
+            node={promoItems.filter((item: IPromoItem) => item.node.youTubeAttributes.featured)[0].node}
+          />
         </Flex>
 
         <Flex as="section" sx={{ alignItems: 'center' }}>

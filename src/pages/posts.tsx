@@ -1,17 +1,25 @@
 import React, { Fragment, FunctionComponent } from 'react'
-import { Box, Container, Grid, Heading } from 'theme-ui'
+import { Box, Container, Flex, Grid, Heading } from 'theme-ui'
 import { PostTile } from '../components/post-tile'
 import { Seo } from '../components/seo'
+import { YouTubePromo } from '../components/youtube-promo/youtube-promo'
 import { usePosts } from '../hooks/usePosts'
-import { IPostItem } from '../types'
+import { usePromos } from '../hooks/usePromos'
+import { IPostItem, IPromoItem } from '../types'
 
 const PostsPage: FunctionComponent = () => {
+  const promoItems = usePromos()
+
   const postItems: IPostItem[] = usePosts()
 
   return (
     <Fragment>
       <Seo title="Posts" />
-      <Box>
+      <Box
+        sx={{
+          mb: 7,
+        }}
+      >
         <Container>
           <Heading as="h1" variant="styles.h5">
             Posts
@@ -28,6 +36,23 @@ const PostsPage: FunctionComponent = () => {
           </Grid>
         </Container>
       </Box>
+      <Flex
+        as="section"
+        sx={{
+          alignItems: 'center',
+          backgroundColor: 'lightGrey',
+          py: 7,
+        }}
+      >
+        <YouTubePromo
+          node={
+            promoItems
+              .filter((item: IPromoItem) => !item.node.youTubeAttributes.featured)
+              .sort(() => 0.5 - Math.random())
+              .slice(0, 1)[0].node
+          }
+        />
+      </Flex>
     </Fragment>
   )
 }

@@ -63,6 +63,7 @@ export interface IPostItem {
 export interface IPromoItem {
   node: {
     youTubeAttributes: {
+      featured: boolean
       title: string
       description: string
       link?: string

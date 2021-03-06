@@ -5,11 +5,15 @@ import React, { Fragment, FunctionComponent } from 'react'
 import { Box, Container, Flex, Heading } from 'theme-ui'
 import { Modifier } from '../components/modifier'
 import { Seo } from '../components/seo'
-import { IPage } from '../types'
+import { YouTubePromo } from '../components/youtube-promo/youtube-promo'
+import { usePromos } from '../hooks/usePromos'
+import { IPage, IPromoItem } from '../types'
 
 interface IPostTemplate extends IPage {}
 
 const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) => {
+  const promoItems = usePromos()
+
   const { title, content, tags, featuredImage, svgAttributes, next, previous } = page
 
   const {
@@ -49,6 +53,23 @@ const WpPostTemplate: FunctionComponent<IPostTemplate> = ({ data: { page } }) =>
           </Flex>
         </Container>
       </Box>
+      <Flex
+        as="section"
+        sx={{
+          alignItems: 'center',
+          backgroundColor: 'lightGrey',
+          py: 7,
+        }}
+      >
+        <YouTubePromo
+          node={
+            promoItems
+              .filter((item: IPromoItem) => !item.node.youTubeAttributes.featured)
+              .sort(() => 0.5 - Math.random())
+              .slice(0, 1)[0].node
+          }
+        />
+      </Flex>
     </Fragment>
   )
 }
