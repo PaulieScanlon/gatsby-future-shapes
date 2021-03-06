@@ -37,7 +37,7 @@ export const YouTubePromo: FunctionComponent<IYouTubePromoProps> = ({ isFeatured
               </Heading>
               <Text sx={{ mb: 3 }}>{description}</Text>
               <Link href={link} target="_blank" rel="noopener" sx={{ fontSize: 0, textTransform: 'uppercase' }}>
-                more info
+                See more videos
               </Link>
             </Box>
             <YouTube youTubeId={id} />
