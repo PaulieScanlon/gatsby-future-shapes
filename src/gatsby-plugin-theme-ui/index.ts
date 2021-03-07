@@ -189,14 +189,11 @@ export default {
       borderRadius: '0px',
       transition: '.2s linear box-shadow, .2s ease-in-out transform ',
       ':focus:not(:focus-visible)': {
+        zIndex: 1,
         outline: 'none',
         boxShadow: 'none',
       },
       ':focus-visible': {
-        outline: 'none',
-        boxShadow: 'focus',
-      },
-      ':focus:enabled': {
         zIndex: 1,
         outline: 'none',
         boxShadow: 'focus',
