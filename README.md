@@ -32,7 +32,7 @@ yarn gatsby-plugin-sharp gatsby-transformer-sharp
 
 ### WP Install
 
-You can search official plugins and install `WP GraphQL` and `WP Gatsby` via Wordpress. Ensure both are "activated" in
+You can search official plugins and install `WP GraphQL` and `WP Gatsby` via WordPress. Ensure both are "activated" in
 the "Manage Plugins" section of your WP site
 
 ### Config
@@ -71,9 +71,9 @@ module.exports = {
 4. In Custom Fields set the location to the name of the Custom Post Type which should then surface the "fields" in the
    WP editor for that Customer Post Type
 
-### Wordpress (Gutenberg) CSS
+### WordPress (Gutenberg) CSS
 
-To ensure sure blocks styled using Gutenberg look the same in the Gatsby build as they do in the Wordpress preview be
+To ensure sure blocks styled using Gutenberg look the same in the Gatsby build as they do in the WordPress preview be
 sure to installed the below node modules.
 
 [@wordpress/block-library](https://developer.wordpress.org/block-editor/packages/packages-block-library/)
