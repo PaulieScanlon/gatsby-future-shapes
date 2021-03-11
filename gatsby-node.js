@@ -1,6 +1,6 @@
-const { resolve } = require(`path`)
+const { resolve } = require('path')
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const {
     data: {
       allWpPage: { edges: pages },
@@ -35,29 +35,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-  await Promise.all(
-    pages.map(async (edge, index) => {
-      const { id, uri } = edge.node
-      await actions.createPage({
-        component: resolve('./src/templates/wp-page-template.tsx'),
-        path: uri,
-        context: {
-          id: id,
-        },
-      })
-    }),
-  )
+  pages.map((edge) => {
+    const { id, uri } = edge.node
+    return actions.createPage({
+      component: resolve('./src/templates/wp-page-template.tsx'),
+      path: uri,
+      context: {
+        id: id,
+      },
+    })
+  })
 
-  await Promise.all(
-    posts.map(async (edge, index) => {
-      const { id, uri } = edge.node
-      await actions.createPage({
-        component: resolve('./src/templates/wp-post-template.tsx'),
-        path: uri,
-        context: {
-          id: id,
-        },
-      })
-    }),
-  )
+  posts.map((edge) => {
+    const { id, uri } = edge.node
+    return actions.createPage({
+      component: resolve('./src/templates/wp-post-template.tsx'),
+      path: uri,
+      context: {
+        id: id,
+      },
+    })
+  })
 }
