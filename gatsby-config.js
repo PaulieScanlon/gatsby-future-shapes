@@ -8,7 +8,7 @@ module.exports = {
     description: `A gatsby-source-wordpress demo`,
     keywords: [`gatsby`, `gatsbyjs`, `gatsby-source-wordpress`],
     siteUrl: `https://gatsbyfutureshapes.gatsbyjs.io/`,
-    siteImage: `images/future-shapes-image.jpg`,
+    siteImage: `images/future-shapes-og-image.jpg`,
     lang: `en-gb`,
     type: `website`,
   },
